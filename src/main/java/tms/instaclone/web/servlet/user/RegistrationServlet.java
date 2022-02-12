@@ -44,7 +44,6 @@ public class RegistrationServlet extends HttpServlet {
         User user = getUserFromRequestParameters(req);
         AbstractEntityValidator<User> userValidator = new UserValidator(userService);
         if (userValidator.isValid(user) && userService.save(user)) {
-            System.out.println(user);
             userRegistrationId.addAndGet(1);
             resp.sendRedirect(URL_LOGIN_SERVLET);
         } else {
@@ -58,15 +57,11 @@ public class RegistrationServlet extends HttpServlet {
         user.setId(userRegistrationId.get());
 
         String mobilePhoneOrEmailParameter = req.getParameter(PARAMETER_NAME_USER_MOBILE_PHONE_OR_EMAIL);
-        if (mobilePhoneOrEmailParameter.matches(UserValidator.REGEX_MOBILE_PHONE)) {
-            user.setMobilePhone(mobilePhoneOrEmailParameter);
-        } else if (mobilePhoneOrEmailParameter.matches(UserValidator.REGEX_EMAIL)) {
-            user.setEmail(mobilePhoneOrEmailParameter);
-        }
+        setUserMobilePhoneOrEmailFromRequestParameter(user, mobilePhoneOrEmailParameter);
 
         String userFirstNameAndLastName = req.getParameter(PARAMETER_NAME_USER_FIRST_NAME_AND_LAST_NAME);
-        user.setFirstName(userFirstNameAndLastName.substring(0, userFirstNameAndLastName.indexOf(" ")));
-        user.setLastName(userFirstNameAndLastName.substring(userFirstNameAndLastName.indexOf(" ")).trim());
+        setUserFirstNameAndLastNameFromRequestParameter(user, userFirstNameAndLastName);
+
         user.setUsername(req.getParameter(PARAMETER_NAME_USER_USERNAME));
         user.setPassword(req.getParameter(PARAMETER_NAME_USER_PASSWORD));
 
@@ -75,5 +70,26 @@ public class RegistrationServlet extends HttpServlet {
         }
 
         return user;
+    }
+
+    private void setUserFirstNameAndLastNameFromRequestParameter(User user, String userFirstNameAndLastName) {
+        if (userFirstNameAndLastName != null && !userFirstNameAndLastName.isBlank()) {
+            String[] names = userFirstNameAndLastName.split(" ");
+            if (names.length > 1) {
+                user.setFirstName(names[0]);
+                user.setLastName(names[1]);
+            } else {
+                user.setFirstName(names[0]);
+                user.setLastName(null);
+            }
+        }
+    }
+
+    private void setUserMobilePhoneOrEmailFromRequestParameter(User user, String mobilePhoneOrEmailParameter) {
+        if (mobilePhoneOrEmailParameter.matches(UserValidator.REGEX_MOBILE_PHONE)) {
+            user.setMobilePhone(mobilePhoneOrEmailParameter);
+        } else if (mobilePhoneOrEmailParameter.matches(UserValidator.REGEX_EMAIL)) {
+            user.setEmail(mobilePhoneOrEmailParameter);
+        }
     }
 }

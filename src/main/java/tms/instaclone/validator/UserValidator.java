@@ -43,7 +43,7 @@ public class UserValidator extends AbstractEntityValidator<User> {
     public boolean isValid(User user) {
         return user != null && !exists(user) &&
                 (isValidEmail(user.getEmail()) || isValidMobilePhone(user.getMobilePhone())) &&
-                isValidName(user.getFirstName()) && isValidName(user.getLastName()) &&
+                (isValidName(user.getFirstName()) || isValidName(user.getLastName())) &&
                 isValidUsername(user.getUsername()) && isValidPassword(user.getPassword()) &&
                 isValidBirthday(user.getBirthday());
     }
