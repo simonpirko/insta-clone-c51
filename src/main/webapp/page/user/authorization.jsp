@@ -20,12 +20,12 @@
     <div class="row justify-content-center">
 
             <div class="col-3">
-                <img src ="https://www.instagram.com/static/images/homepage/screenshot4.jpg/842fe5699220.jpg">
+                <img src ="/page/images/phone.jpg">
             </div>
 
             <div class="col-3">
                 <div class="row justify-content-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/320px-Instagram_logo.svg.png">
+                    <img src="/page/images/Instagramlogo.png">
                 </div>
 
                 <form action="/" method="post">
@@ -53,10 +53,10 @@
 
                 <div class="row justify-content-center">
                     <div class="col-6">
-                        <a href="URL"><img class="img-fluid" src="https://w7.pngwing.com/pngs/822/688/png-transparent-apple-on-the-app-store-screenshot-iphone-app-store-google-play-store-electronics-text-logo-thumbnail.png" alt="App. Store"></a>
+                        <a href="URL"><img class="img-fluid" src="/page/images/fbapp.png" alt="App. Store"></a>
                     </div>
                     <div class="col-6">
-                        <a href="URL"><img class="img-fluid" src="https://w7.pngwing.com/pngs/91/37/png-transparent-google-play-android-app-store-android-text-logo-microsoft-store.png" alt="Google Play"></a>
+                        <a href="URL"><img class="img-fluid" src="/page/images/fbplay.png" alt="Google Play"></a>
                     </div>
                 </div>
 
