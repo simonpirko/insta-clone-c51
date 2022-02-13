@@ -18,34 +18,37 @@
 <br>
 <div class="container">
     <div class="row justify-content-center">
-        <div class="row justify-content-center">
+
             <div class="col-3">
                 <img src ="https://www.instagram.com/static/images/homepage/screenshot4.jpg/842fe5699220.jpg">
             </div>
+
             <div class="col-3">
                 <div class="row justify-content-center">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/320px-Instagram_logo.svg.png">
+                </div>
 
-                    <form>
-                        <div class="form-floating mb-1 ">
-                            <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Login">
-                            <label for="floatingInput">Телефон/логин/e-mail</label>
-                        </div>
-                        <div class="form-floating mb-1">
-                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Пароль</label>
-                        </div>
-                        <div class="d-grid gap-1">
-                            <button type="submit" class="btn btn-info">Войти</button>
-                        </div>
-                    </form>
-
-                    <div class="nav justify-content-center">
-                        <a class="nav-link" href="  ">Забыли пароль?</a>
-                        <a class="nav-link" href="  ">Зарегистрироваться</a>
-                        <p class="text-center">Установите приложение</p>
-                        <br>
+                <form action="/" method="post">
+                    <div class="form-floating mb-1">
+                        <input type="text" name="login" class="form-control" id="floatingLogin" placeholder="Телефон/логин/e-mail">
+                        <label for="floatingLogin">Телефон/логин/e-mail</label>
                     </div>
+
+                    <div class="form-floating mb-1">
+                        <input type="text" name="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+                        <label for="floatingPassword">Пароль</label>
+                    </div>
+
+                    <div class="d-grid gap-1">
+                        <button type="submit" class="btn btn-info">Войти</button>
+                    </div>
+                </form>
+
+                <div class="nav justify-content-center">
+                    <a class="nav-link" href="  ">Забыли пароль?</a>
+                    <a class="nav-link" href="  ">Зарегистрироваться</a>
+                    <p class="text-center">Установите приложение</p>
+                    <br>
                 </div>
 
                 <div class="row justify-content-center">
@@ -56,8 +59,8 @@
                         <a href="URL"><img class="img-fluid" src="https://w7.pngwing.com/pngs/91/37/png-transparent-google-play-android-app-store-android-text-logo-microsoft-store.png" alt="Google Play"></a>
                     </div>
                 </div>
+
             </div>
-        </div>
     </div>
 </div>
 
