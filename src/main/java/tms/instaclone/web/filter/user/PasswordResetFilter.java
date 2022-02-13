@@ -15,20 +15,8 @@ public class PasswordResetFilter extends HttpFilter {
 
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
-        if (req.getMethod().equals("POST")) {
-            String userName = req.getParameter("username");
-            String password = req.getParameter("password");
-//            if (name == null || userName == null || password == null) {
-//                req.setAttribute("messageErrorRegistration", Constants.MSG_ERROR_NAME_USERNAME_PASSWORD_NULL);
-//                req.getServletContext().getRequestDispatcher(Constants.REGISTRATION_LINK_JSP).forward(req, resp);
-//            } else if (name.isEmpty() || userName.isEmpty() || password.isEmpty()) {
-//                req.setAttribute("messageErrorRegistration", Constants.MSG_ERROR_NAME_USERNAME_PASSWORD_EMPTY);
-//                req.getServletContext().getRequestDispatcher(Constants.REGISTRATION_LINK_JSP).forward(req, resp);
-//            } else if (userService.checkByUserLogin(userName)) {
-//                req.setAttribute("messageErrorRegistration", Constants.MSG_ERROR_USER_HAS_FOUND);
-//                req.getServletContext().getRequestDispatcher(Constants.AUTHORIZATION_LINK_JSP).forward(req, resp);
-//            }
-        }
+//        if (req.getMethod().equals("POST")) {
+//        }
         chain.doFilter(req, resp);
     }
 }

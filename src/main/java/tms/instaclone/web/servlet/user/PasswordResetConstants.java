@@ -2,7 +2,7 @@ package tms.instaclone.web.servlet.user;
 
 public class PasswordResetConstants {
     //links to JSP pages
-    public static final String PASSWORD_RESET_PAGE_TEMPLATE_LINK_JSP = "/pages/accounts/login/passwordResetPage.jsp";
+    public static final String PASSWORD_RESET_PAGE_TEMPLATE_LINK_JSP = "/page/accounts/login/passwordResetPage.jsp";
 
 
     //links to servlet
