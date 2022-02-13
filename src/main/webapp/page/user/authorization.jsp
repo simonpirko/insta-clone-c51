@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-            <div class="col-3">
+            <div class="col-4">
                 <img src ="/page/images/phone.jpg">
             </div>
 
@@ -28,15 +28,16 @@
                     <img src="/page/images/Instagramlogo.png">
                 </div>
 
+
                 <form action="/" method="post">
-                    <div class="form-floating mb-1">
-                        <input type="text" name="login" class="form-control" id="floatingLogin" placeholder="Телефон/логин/e-mail">
-                        <label for="floatingLogin">Телефон/логин/e-mail</label>
+
+                    <div class="row justify-content-center m-2">
+                            <input type="text" name="login" class="form-control" placeholder=
+                                    "Телефон, имя пользователя или эл.адрес" required>
                     </div>
 
-                    <div class="form-floating mb-1">
-                        <input type="text" name="password" class="form-control" id="floatingPassword" placeholder="Пароль">
-                        <label for="floatingPassword">Пароль</label>
+                    <div class="row justify-content-center m-2">
+                        <input type="text" name="password" class="form-control" placeholder="Пароль" required>
                     </div>
 
                     <div class="d-grid gap-1">
@@ -44,14 +45,20 @@
                     </div>
                 </form>
 
+                <div class="row justify-content-center">
+                    <p class="text-center">---------------  ИЛИ  ---------------</p>
+                </div>
+
                 <div class="nav justify-content-center">
                     <a class="nav-link" href="  ">Забыли пароль?</a>
-                    <a class="nav-link" href="  ">Зарегистрироваться</a>
-                    <p class="text-center">Установите приложение</p>
-                    <br>
+                </div>
+
+                <div class="nav justify-content-center">
+                    <p class="text-center">У вас ещё нет аккаунта?<a href="URL" class="text-decoration-none">Зарегистрироваться</a></p>
                 </div>
 
                 <div class="row justify-content-center">
+                    <p class="text-center">Установите приложение.</p>
                     <div class="col-6">
                         <a href="URL"><img class="img-fluid" src="/page/images/fbapp.png" alt="App. Store"></a>
                     </div>
@@ -59,10 +66,44 @@
                         <a href="URL"><img class="img-fluid" src="/page/images/fbplay.png" alt="Google Play"></a>
                     </div>
                 </div>
-
             </div>
     </div>
 </div>
+<br>
+<br>
+
+<footer>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="row justify-content-center m-1 p-1">
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Meta</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Информация</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Блог</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Вакансии</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Помощь</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">API</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Конфиденциальность</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Условия</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Популярные аккаунты</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Хэштеги</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Места</p></a>
+                </div>
+                <div class="col"><a href="URL" class="text-decoration-none"><p class="fs-6 text-center text-muted">Instagram Lite</p></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
