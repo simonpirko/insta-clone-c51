@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="row justify-content-center m-1 p-1">
             <div class="col-3">
-                <img class="img-fluid" src="remove/page/images/Instagram_logo.svg.png" alt="Instagram">
+                <img class="img-fluid" src="/page/images/Instagram_logo.svg.png" alt="Instagram">
             </div>
         </div>
 
