@@ -17,7 +17,7 @@
     <div class="row justify-content-center">
         <div class="row justify-content-center m-1 p-1">
             <div class="col-3">
-                <img class="img-fluid" src="../images/Instagram_logo.svg.png" alt="Instagram">
+                <img class="img-fluid" src="../page/images/Instagram_logo.svg.png" alt="Instagram">
             </div>
         </div>
 
@@ -90,10 +90,10 @@
 
     <div class="row justify-content-center m-1 p-1">
         <div class="col-1">
-            <a href="URL"><img class="img-fluid" src="../images/fb_app.png" alt="App Store"></a>
+            <a href="URL"><img class="img-fluid" src="../page/images/fb_app.png" alt="App Store"></a>
         </div>
         <div class="col-1">
-            <a href="URL"><img class="img-fluid" src="../images/fb_play.png" alt="Google Play"></a>
+            <a href="URL"><img class="img-fluid" src="../page/images/fb_play.png" alt="Google Play"></a>
         </div>
     </div>
 
