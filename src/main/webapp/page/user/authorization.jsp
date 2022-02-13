@@ -27,11 +27,11 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/320px-Instagram_logo.svg.png">
 
                     <form>
-                        <div class="form-floating mb-1">
+                        <div class="form-floating mb-1 ">
                             <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Login">
                             <label for="floatingInput">Телефон/логин/e-mail</label>
                         </div>
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-1">
                             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Пароль</label>
                         </div>
@@ -47,12 +47,13 @@
                         <br>
                     </div>
                 </div>
+
                 <div class="row justify-content-center">
-                    <div class="col-3">
-                        <button type="submit"><img height="20" width="50" src="https://w7.pngwing.com/pngs/822/688/png-transparent-apple-on-the-app-store-screenshot-iphone-app-store-google-play-store-electronics-text-logo-thumbnail.png" .../></button>
+                    <div class="col-6">
+                        <a href="URL"><img class="img-fluid" src="https://w7.pngwing.com/pngs/822/688/png-transparent-apple-on-the-app-store-screenshot-iphone-app-store-google-play-store-electronics-text-logo-thumbnail.png" alt="App. Store"></a>
                     </div>
-                    <div class="col-3">
-                        <button type="submit"><img height="20" width="50" src="https://families.google.com/familylink/static/img/google-play/googleplay.ru_ALL.png?cache=c73dc84" .../></button>
+                    <div class="col-6">
+                        <a href="URL"><img class="img-fluid" src="https://w7.pngwing.com/pngs/91/37/png-transparent-google-play-android-app-store-android-text-logo-microsoft-store.png" alt="Google Play"></a>
                     </div>
                 </div>
             </div>
