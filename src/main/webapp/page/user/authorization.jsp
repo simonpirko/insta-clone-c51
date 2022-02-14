@@ -67,7 +67,15 @@
 
 
                     <div class="row justify-content-center">
-                        <p class="text-center">---------------  ИЛИ  ---------------</p>
+                        <div class="col-4">
+                            <hr>
+                        </div>
+                        <div class="col-2">
+                            <p class="text-center">  ИЛИ  </p>
+                        </div>
+                        <div class="col-4">
+                            <hr>
+                        </div>
                     </div>
 
                     <div class="nav justify-content-center">
