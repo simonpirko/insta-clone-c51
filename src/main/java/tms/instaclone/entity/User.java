@@ -97,7 +97,8 @@ public class User extends Entity {
 
     @Override
     public String toString() {
-        return "User{" +
+        return super.toString() +
+                "User{" +
                 "email='" + email + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
                 ", firstName='" + firstName + '\'' +
@@ -105,6 +106,6 @@ public class User extends Entity {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
-                '}';
+                '}' + '}';
     }
 }

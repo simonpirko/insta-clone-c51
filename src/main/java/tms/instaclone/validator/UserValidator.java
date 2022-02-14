@@ -11,6 +11,7 @@ public class UserValidator extends AbstractEntityValidator<User> {
     public static final String REGEX_EMAIL = ".+@.+\\..+";
     public static final String REGEX_MOBILE_PHONE =
             "^(\\+)?(\\(\\d{2,3}\\) ?\\d|\\d)(([ \\-]?\\d)|( ?\\(\\d{2,3}\\) ?)){5,12}\\d$";
+    public static final String REGEX_USERNAME = "^[\\d\\w]*$";
     public static final int MIN_PASSWORD_LENGTH = 5;
     public static final int MAX_PASSWORD_LENGTH = 30;
     public static final int MIN_USER_AGE = 18;
@@ -32,7 +33,6 @@ public class UserValidator extends AbstractEntityValidator<User> {
     private static final String MESSAGE_INVALID_BIRTHDAY_FIELD = "Invalid birthday!";
     private static final String MESSAGE_INVALID_PASSWORD_FIELD = "Invalid password!";
 
-
     private UserService userService;
 
     public UserValidator(UserService userService) {
@@ -41,16 +41,17 @@ public class UserValidator extends AbstractEntityValidator<User> {
 
     @Override
     public boolean isValid(User user) {
-        return user != null && !exists(user) &&
+        return user != null &&
+                !exists(user) &&
                 (isValidEmail(user.getEmail()) || isValidMobilePhone(user.getMobilePhone())) &&
                 (isValidName(user.getFirstName()) || isValidName(user.getLastName())) &&
-                isValidUsername(user.getUsername()) && isValidPassword(user.getPassword()) &&
+                isValidUsername(user.getUsername()) &&
+                isValidPassword(user.getPassword()) &&
                 isValidBirthday(user.getBirthday());
     }
 
     private boolean exists(User user) {
         if (userService.exists(user)) {
-            getErrorMessages().replace(USER_EXISTS, null);
             return true;
         } else {
             getErrorMessages().put(USER_EXISTS, MESSAGE_USER_EXISTS);
@@ -77,7 +78,7 @@ public class UserValidator extends AbstractEntityValidator<User> {
     }
 
     private boolean isValidName(String name) {
-        if (name != null && !name.isBlank() && Pattern.matches(REGEX_NAME, name)) {
+        if (name != null && !name.isBlank() && Pattern.matches(REGEX_CONTAIN_ONLY_LATIN_CHARS_AND_NUMBERS, name)) {
             return true;
         } else {
             getErrorMessages().put(FIELD_NAME, MESSAGE_INVALID_NAME_FIELD);
@@ -87,7 +88,6 @@ public class UserValidator extends AbstractEntityValidator<User> {
 
     private boolean isValidUsername(String username) {
         if (username != null && !username.isBlank() && Pattern.matches(REGEX_USERNAME, username)) {
-
             return true;
         } else {
             getErrorMessages().put(FIELD_USERNAME, MESSAGE_INVALID_USERNAME_FIELD);

@@ -6,7 +6,7 @@ import tms.instaclone.entity.User;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class InMemoryUserDAO implements UserDAO<User> {
+public class InMemoryUserDAO implements UserDAO {
     private Map<Long, User> dataSource;
 
     public InMemoryUserDAO(Map<Long, User> dataSource) {
@@ -15,7 +15,7 @@ public class InMemoryUserDAO implements UserDAO<User> {
 
     @Override
     public boolean exists(User user) {
-        if (dataSource != null && !dataSource.isEmpty()) {
+        if (user != null && dataSource != null && !dataSource.isEmpty()) {
             return dataSource.values()
                     .stream()
                     .anyMatch(currentUser -> {
@@ -38,6 +38,6 @@ public class InMemoryUserDAO implements UserDAO<User> {
         if (dataSource == null) {
             dataSource = new ConcurrentHashMap<>();
         }
-        return dataSource.putIfAbsent(user.getId(), user) == null;
+        return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
     }
 }
