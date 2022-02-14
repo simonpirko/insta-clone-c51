@@ -58,7 +58,7 @@
                                            placeholder="Пароль" required>
                                 </div>
 
-                                <div class="d-grid gap-1 m-2">
+                                <div class="d-grid gap-1 pt-3">
                                     <button type="submit" class="btn btn-info">Войти</button>
                                 </div>
                             </form>
@@ -81,12 +81,13 @@
                     </div>
                 </div>
 
+
                 <div class="row justify-content-center">
                     <p class="text-center">Установите приложение.</p>
-                    <div class="col-6">
+                    <div class="col-4">
                         <a href="https://apps.apple.com/app/instagram/id389801252?vt=lo"><img class="img-fluid" src="/page/images/fbapp.png" alt="App. Store"></a>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb&utm_campaign=loginPage&ig_mid=938B65A2-8511-4EE6-9C40-BEF973669FFA&utm_content=lo&utm_medium=badge"><img class="img-fluid" src="/page/images/fbplay.png" alt="Google Play"></a>
                     </div>
                 </div>
