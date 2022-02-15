@@ -11,8 +11,14 @@
     <title>Title</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <%--    <style>--%>
+    <%--        body {--%>
+    <%--            background-color: gainsboro;--%>
+    <%--        }--%>
+
+    <%--    </style>--%>
 </head>
-<body background="#d3d3d3">
+<body>
 <nav class="navbar">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -27,7 +33,7 @@
 <br>
 <div class="row justify-content-md-center">
     <div class="col-md-4">
-        <form action="/passwordReset" method="post">
+        <form action="/passwordReset">
             <div style="text-align: center;">
                 <a class="navbar-brand" href="#">
                     <img src="/page/images/lock.png" alt="lock" width="103" height="118">
@@ -48,13 +54,13 @@
                 <p>
                 <h6>доступа к аккаунту.</h6>
                 </p>
-                <div class="row justify-content-md-6-center">
-                    <label><input type="text" name="name" placeholder="Эл.адрес, телефон или имя пользователя" required></label>
+                <div class="row justify-content-center">
+                    <label><input type="text" name="name" placeholder="Эл.адрес, телефон или имя пользователя" required
+                                  style="width: 350px;" style="text-align: center;">
+                    </label>
                 </div>
                 <br>
-                <button type="button" class="btn btn-primary" disabled data-bs-toggle="button" autocomplete="off">
-                    Получить ссылку для входа
-                </button>
+                <button type="button" class="btn btn-primary">Получить ссылку для входа</button>
                 <br>
                 <br>
                 <div class="container">
@@ -73,18 +79,16 @@
                     </div>
                 </div>
                 <br>
-                <a class="nav-link active" aria-current="page" href="">Создать новый аккаунт</a>
+                <a class="nav-link active" aria-current="page" href="/">Создать новый аккаунт</a>
 
 
             </div>
         </form>
-        <form action="/">
-            <div style="text-align: center;">
-                <br>
-                <button type="button" class="btn btn-light">Вернуться к входу</button>
-                <br>
-            </div>
-        </form>
+        <div style="text-align: center;">
+            <br>
+            <a class="nav-link active" aria-current="page" href="/">Вернуться к входу</a>
+            <br>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
