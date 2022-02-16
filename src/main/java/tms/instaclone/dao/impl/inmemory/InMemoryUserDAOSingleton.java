@@ -6,16 +6,27 @@ import tms.instaclone.entity.User;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class InMemoryUserDAO implements UserDAO {
-    private Map<Long, User> dataSource;
+public final class InMemoryUserDAOSingleton implements UserDAO {
+    private static volatile InMemoryUserDAOSingleton instance;
+    private final Map<Long, User> dataSource = new ConcurrentHashMap<>();
 
-    public InMemoryUserDAO(Map<Long, User> dataSource) {
-        this.dataSource = dataSource;
+    private InMemoryUserDAOSingleton() {
+    }
+
+    public static InMemoryUserDAOSingleton getInstance(){
+        if (instance == null) {
+            synchronized (InMemoryUserDAOSingleton.class) {
+                if (instance == null) {
+                    instance = new InMemoryUserDAOSingleton();
+                }
+            }
+        }
+        return instance;
     }
 
     @Override
     public boolean exists(User user) {
-        if (user != null && dataSource != null && !dataSource.isEmpty()) {
+        if (user != null && !dataSource.isEmpty()) {
             return dataSource.values()
                     .stream()
                     .anyMatch(currentUser -> {
@@ -23,7 +34,7 @@ public class InMemoryUserDAO implements UserDAO {
                             return currentUser.getEmail().equals(user.getEmail()) ||
                                     currentUser.getUsername().equals(user.getUsername());
                         } else {
-                            return currentUser.getMobilePhone().equals(user.getMobilePhone()) ||
+                            return currentUser.getMobilePhoneNumber().equals(user.getMobilePhoneNumber()) ||
                                     currentUser.getUsername().equals(user.getUsername());
                         }
                     });
@@ -35,9 +46,6 @@ public class InMemoryUserDAO implements UserDAO {
 
     @Override
     public boolean save(User user) {
-        if (dataSource == null) {
-            dataSource = new ConcurrentHashMap<>();
-        }
         return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
     }
 }
