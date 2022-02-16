@@ -68,13 +68,11 @@
                                        placeholder="Пароль"
                                        aria-label=".form-control-sm example">
                         </div>
-                    </form>
-
-                    <div class="row justify-content-center">
-                        <div class="d-grid gap-2 mx-auto">
-                            <button name="registration" type="button" class="btn btn-primary">Регистрация</button>
+                        <div class="row justify-content-center m-1">
+                            <input name="registration" required class="btn btn-primary" type="submit" value="Регистрация"
+                                   aria-label=".form-control-sm example">
                         </div>
-                    </div>
+                    </form>
 
                     <div class="row justify-content-center mt-1">
                             <small class="text-center text-muted m-1">Регистрируясь, вы принимаете наши <b>Условия</b>, <b>Политику
