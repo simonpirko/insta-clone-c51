@@ -1,4 +1,4 @@
-package tms.instaclone.web.servlet.user;
+package tms.instaclone.web.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
