@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class User extends Entity {
     private String email;
-    private String mobilePhone;
+    private MobilePhoneNumber mobilePhoneNumber;
     private String firstName;
     private String lastName;
     private String username;
@@ -15,10 +15,10 @@ public class User extends Entity {
     public User() {
     }
 
-    public User(String email, String mobilePhone, String firstName, String lastName, String username,
+    public User(String email, MobilePhoneNumber mobilePhoneNumber, String firstName, String lastName, String username,
                 String password, LocalDate birthday) {
         this.email = email;
-        this.mobilePhone = mobilePhone;
+        this.mobilePhoneNumber = mobilePhoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -34,12 +34,12 @@ public class User extends Entity {
         this.email = email;
     }
 
-    public String getMobilePhone() {
-        return mobilePhone;
+    public MobilePhoneNumber getMobilePhoneNumber() {
+        return mobilePhoneNumber;
     }
 
-    public void setMobilePhone(String mobilePhone) {
-        this.mobilePhone = mobilePhone;
+    public void setMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber) {
+        this.mobilePhoneNumber = mobilePhoneNumber;
     }
 
     public String getFirstName() {
@@ -100,7 +100,7 @@ public class User extends Entity {
         return super.toString() +
                 "User{" +
                 "email='" + email + '\'' +
-                ", mobilePhone='" + mobilePhone + '\'' +
+                ", mobilePhoneNumber=" + mobilePhoneNumber +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", username='" + username + '\'' +

@@ -1,7 +1,11 @@
 package tms.instaclone.entity;
 
+import java.time.LocalDateTime;
+
 public abstract class Entity {
     private long id;
+    private LocalDateTime creationDateTime = LocalDateTime.now();
+    private LocalDateTime updateDateTime;
 
     public Entity() {
     }
@@ -10,7 +14,7 @@ public abstract class Entity {
         this.id = id;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
@@ -18,10 +22,28 @@ public abstract class Entity {
         this.id = id;
     }
 
+    public LocalDateTime getCreationDateTime() {
+        return creationDateTime;
+    }
+
+    public void setCreationDateTime(LocalDateTime creationDateTime) {
+        this.creationDateTime = creationDateTime;
+    }
+
+    public LocalDateTime getUpdateDateTime() {
+        return updateDateTime;
+    }
+
+    public void setUpdateDateTime(LocalDateTime updateDateTime) {
+        this.updateDateTime = updateDateTime;
+    }
+
     @Override
     public String toString() {
         return "Entity{" +
                 "id=" + id +
-                "{";
+                ", creationDateTime=" + creationDateTime +
+                ", updateDateTime=" + updateDateTime +
+                '{';
     }
 }
