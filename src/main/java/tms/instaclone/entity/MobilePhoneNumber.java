@@ -42,7 +42,8 @@ public class MobilePhoneNumber extends Entity {
 
     @Override
     public String toString() {
-        return "MobilePhoneNumber{" +
+        return super.toString() +
+                "MobilePhoneNumber{" +
                 "countryCallingCode='" + countryCallingCode + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}' + '}';
