@@ -46,15 +46,15 @@
 
                     <form action="/registration" method="post" class="row justify-content-center">
                         <div class="row justify-content-center m-1">
-                                <input required class="form-control form-control-sm" type="text"
+                                <input name="phoneOrEmail" required class="form-control form-control-sm" type="text"
                                        placeholder="Моб. телефон или эл. адрес"
                                        aria-label=".form-control-sm example">
                         </div>
 
                         <div class="row justify-content-center m-1">
-                            <div class="input-group input-group-sm mb-3"><input name="nameAndSurname" required class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" type="text"
-                                                                                placeholder="Имя и фамилия"></div>
-
+                                <input name="nameAndSurname" required class="form-control form-control-sm" type="text"
+                                       placeholder="Имя и фамилия"
+                                       aria-label=".form-control-sm example">
                         </div>
 
                         <div class="row justify-content-center m-1">
