@@ -4,7 +4,9 @@ import tms.instaclone.entity.MobilePhoneNumber;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Properties;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
 public class MobilePhoneNumberValidator {
@@ -21,7 +23,10 @@ public class MobilePhoneNumberValidator {
             Properties country = new Properties();
             try {
                 country.load(new FileInputStream(PATH_COUNTRY_CALLING_CODE_PROPERTIES));
-                return country.containsValue(countryCallingCode);
+                return country.values()
+                        .stream()
+                        .flatMap(callingCode -> Arrays.stream(String.valueOf(callingCode).split(",")))
+                        .anyMatch(Predicate.isEqual(countryCallingCode));
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
