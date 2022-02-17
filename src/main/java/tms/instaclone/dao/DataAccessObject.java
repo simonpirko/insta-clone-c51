@@ -11,10 +11,6 @@ public interface DataAccessObject<T extends Entity> {
 
     boolean save(T entity);
 
-    Optional<T> getUserByEmail(String email);
 
-    Optional<T> getUserByUsername(String username);
-
-    Optional<T> getUserByMobilePhoneNumber(String mobilePhoneNumber);
 
 }
