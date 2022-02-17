@@ -5,6 +5,8 @@ import tms.instaclone.dao.impl.inmemory.InMemoryUserDAOSingleton;
 import tms.instaclone.entity.User;
 import tms.instaclone.validator.UserValidator;
 
+import java.util.Optional;
+
 public final class UserServiceSingleton {
     private static volatile UserServiceSingleton instance;
     private final DataAccessObject<User> userDAO = InMemoryUserDAOSingleton.getInstance();
@@ -26,4 +28,17 @@ public final class UserServiceSingleton {
     public boolean save(User user) {
         return UserValidator.isValid(user) && !userDAO.exists(user) && userDAO.save(user);
     }
+
+    public Optional<User> getUserByEmail(String email){
+        return userDAO.getUserByEmail(email);
+    }
+
+    public Optional<User> getUserByUsername(String username){
+        return userDAO.getUserByUsername(username);
+    }
+
+    public Optional<User> getUserByMobilePhoneNumber(String mobilePhoneNumber){
+        return userDAO.getUserByMobilePhoneNumber(mobilePhoneNumber);
+    }
+
 }
