@@ -28,7 +28,7 @@
             <div class="brd mb-4 mt-4">
                 <div class="row justify-content-center">
                     <div class="row justify-content-center">
-                            <img class="img-fluid" src="/WEB-INF/page/images/Instagram_logo.svg.png" alt="Instagram">
+                            <img class="img-fluid" src="/page/images/Instagram_logo.svg.png" alt="Instagram">
                     </div>
 
                     <div class="row justify-content-center">
@@ -87,10 +87,10 @@
 
                 <div class="row justify-content-center">
                     <div class="col-6">
-                        <a href="URL"><img class="img-fluid" src="/WEB-INF/page/images/fbapp.png" alt="App Store"></a>
+                        <a href="URL"><img class="img-fluid" src="/page/images/fbapp.png" alt="App Store"></a>
                     </div>
                     <div class="col-6">
-                        <a href="URL"><img class="img-fluid" src="/WEB-INF/page/images/fbplay.png" alt="Google Play"></a>
+                        <a href="URL"><img class="img-fluid" src="/page/images/fbplay.png" alt="Google Play"></a>
                     </div>
                 </div>
 
