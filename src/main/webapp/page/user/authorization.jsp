@@ -34,7 +34,7 @@
                 <div class="brd mb-4">
 
                     <div class="row justify-content-center m-4">
-                        <img src="/page/images/Instagramlogo.png">
+                        <img src="/page/images/instagramlogo.png">
                     </div>
 
                     <div class="row justify-content-center">

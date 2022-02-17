@@ -15,7 +15,7 @@
 <nav class="navbar">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="/page/images/Instagram_logo.png" alt="" width="120" height="43">
+            <img src="/page/images/instagramlogo.png" alt="" width="120" height="43">
         </a>
     </div>
 </nav>
@@ -72,7 +72,7 @@
                     </div>
                 </div>
                 <br>
-                <a class="nav-link active" aria-current="page" href="/">Создать новый аккаунт</a>
+                <a class="nav-link active" aria-current="page" href="/accounts/emailsignup/">Создать новый аккаунт</a>
 
 
             </div>

@@ -28,7 +28,7 @@
             <div class="brd mb-4 mt-4">
                 <div class="row justify-content-center">
                     <div class="row justify-content-center">
-                            <img class="img-fluid" src="/page/images/Instagram_logo.svg.png" alt="Instagram">
+                            <img class="img-fluid" src="/page/images/instagramlogo.png" alt="Instagram">
                     </div>
 
                     <div class="row justify-content-center">
