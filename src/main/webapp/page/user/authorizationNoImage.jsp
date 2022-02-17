@@ -46,12 +46,18 @@
 
                             <div class="row justify-content-center m-2">
                                 <input type="text" name="login" class="form-control form-control-sm"
-                                       placeholder="Телефон, имя пользователя или эл.адрес" required>
+                                       placeholder="Телефон, имя пользователя или эл.адрес"
+                                       pattern="(^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$)|(.+@.+\..+)|(^[\d\w]*$)"
+                                       required>
                             </div>
 
                             <div class="row justify-content-center m-2">
                                 <input type="text" name="password" class="form-control form-control-sm"
-                                       placeholder="Пароль" required>
+                                       placeholder="Пароль"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z0-9]*"
+                                       required>
                             </div>
 
                             <div class="d-grid gap-1 pt-3">
