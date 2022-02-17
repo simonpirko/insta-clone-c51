@@ -42,7 +42,7 @@
                 <div class="row justify-content-center">
                     <div class="col-10">
 
-                        <form action="/" method="post">
+                        <form action="/accounts/login/" method="post">
 
                             <div class="row justify-content-center m-2">
                                 <input type="text" name="login" class="form-control form-control-sm"
