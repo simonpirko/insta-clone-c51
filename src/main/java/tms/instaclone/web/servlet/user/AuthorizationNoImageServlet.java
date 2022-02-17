@@ -1,4 +1,4 @@
-package tms.instaclone.web.user;
+package tms.instaclone.web.servlet.user;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/accounts/login/")
-public class AuthorizationServletNoImage extends HttpServlet {
+import static tms.instaclone.web.servlet.ServletConstants.*;
+
+@WebServlet(urlPatterns = URL_AUTHORIZATION_NO_IMAGE_SERVLET, name = NAME_AUTHORIZATION_NO_IMAGE_SERVLET)
+public class AuthorizationNoImageServlet extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getServletContext().getRequestDispatcher("/page/user/authorizationNoImage.jsp").forward(req, resp);
+        req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_NO_IMAGE_JSP).forward(req, resp);
     }
 }
