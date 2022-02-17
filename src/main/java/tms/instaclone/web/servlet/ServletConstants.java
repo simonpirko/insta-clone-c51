@@ -9,7 +9,7 @@ public final class ServletConstants {
 
     public static final String NAME_REGISTRATION_SERVLET = "RegistrationServlet";
     public static final String NAME_AUTHORIZATION_SERVLET = "AuthorizationServlet";
-    public static final String NAME_PASSWORD_RESET_SERVLET = "AuthorizationServlet";
+    public static final String NAME_PASSWORD_RESET_SERVLET = "PasswordResetServlet";
     public static final String NAME_AUTHORIZATION_NO_IMAGE_SERVLET = "AuthorizationNoImageServlet";
 
 
