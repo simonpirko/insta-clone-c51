@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Larisa
-  Date: 12.02.2022
-  Time: 16:17
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -35,7 +28,7 @@
             <div class="brd mb-4 mt-4">
                 <div class="row justify-content-center">
                     <div class="row justify-content-center">
-                            <img class="img-fluid" src="/page/images/Instagram_logo.svg.png" alt="Instagram">
+                            <img class="img-fluid" src="/page/images/instagramlogo.png" alt="Instagram">
                     </div>
 
                     <div class="row justify-content-center">
@@ -105,10 +98,10 @@
 
                 <div class="row justify-content-center">
                     <div class="col-6">
-                        <a href="URL"><img class="img-fluid" src="/page/images/fb_app.png" alt="App Store"></a>
+                        <a href="URL"><img class="img-fluid" src="/page/images/fbapp.png" alt="App Store"></a>
                     </div>
                     <div class="col-6">
-                        <a href="URL"><img class="img-fluid" src="/page/images/fb_play.png" alt="Google Play"></a>
+                        <a href="URL"><img class="img-fluid" src="/page/images/fbplay.png" alt="Google Play"></a>
                     </div>
                 </div>
 
