@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class UserValidator {
     public static final String REGEX_CONTAIN_ONLY_LATIN_CHARS_AND_NUMBERS = "^[a-zA-Z0-9]*$";
-    public static final String REGEX_EMAIL = ".+@.+\\..+";
+    public static final String REGEX_EMAIL = "([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+)";
     public static final String REGEX_USERNAME = "^[\\d\\w]*$";
 
 
@@ -47,7 +47,7 @@ public class UserValidator {
     public static boolean isValidBirthday(LocalDate birthday) {
         if (birthday != null) {
             int userAge = Period.between(birthday, LocalDate.now()).getYears();
-            return userAge > MIN_USER_AGE && userAge < MAX_USER_AGE;
+            return userAge >= MIN_USER_AGE && userAge < MAX_USER_AGE;
         } else {
             return false;
         }
