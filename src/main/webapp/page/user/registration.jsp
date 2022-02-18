@@ -44,27 +44,38 @@
                                 друзей</p>
                     </div>
 
-                    <form action="/registration" method="post" class="row justify-content-center">
+                    <form action="/accounts/emailsignup/" method="post" class="row justify-content-center">
                         <div class="row justify-content-center m-1">
                                 <input name="phoneOrEmail" required class="form-control form-control-sm" type="text"
+                                       minlength="5"
+                                       pattern="(^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$)|([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"
                                        placeholder="Моб. телефон или эл. адрес"
                                        aria-label=".form-control-sm example">
                         </div>
 
                         <div class="row justify-content-center m-1">
                                 <input name="nameAndSurname" required class="form-control form-control-sm" type="text"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z]+(\s+[A-Za-z]+)?"
                                        placeholder="Имя и фамилия"
                                        aria-label=".form-control-sm example">
                         </div>
 
                         <div class="row justify-content-center m-1">
                                 <input name="username" required class="form-control form-control-sm" type="text"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z0-9]*"
                                        placeholder="Имя пользователя"
                                        aria-label=".form-control-sm example">
                         </div>
 
                         <div class="row justify-content-center m-1">
                                 <input name="password" required class="form-control form-control-sm" type="password"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z0-9]*"
                                        placeholder="Пароль"
                                        aria-label=".form-control-sm example">
                         </div>
