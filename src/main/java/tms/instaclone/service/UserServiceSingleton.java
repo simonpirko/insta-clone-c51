@@ -1,13 +1,13 @@
 package tms.instaclone.service;
 
-import tms.instaclone.dao.DataAccessObject;
+import tms.instaclone.dao.UserDAO;
 import tms.instaclone.dao.impl.inmemory.InMemoryUserDAOSingleton;
 import tms.instaclone.entity.User;
 import tms.instaclone.validator.UserValidator;
 
 public final class UserServiceSingleton {
     private static volatile UserServiceSingleton instance;
-    private final DataAccessObject<User> userDAO = InMemoryUserDAOSingleton.getInstance();
+    private final UserDAO userDAO = InMemoryUserDAOSingleton.getInstance();
 
     private UserServiceSingleton() {
     }
