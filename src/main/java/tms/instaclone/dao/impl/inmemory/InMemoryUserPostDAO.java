@@ -8,18 +8,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
-public final class InMemoryUserPostDAOSingleton implements UserPostDAO {
-    private static volatile InMemoryUserPostDAOSingleton instance;
+public final class InMemoryUserPostDAO implements UserPostDAO {
+    private static volatile InMemoryUserPostDAO instance;
     private final Map<Long, UserPost> dataSource = new ConcurrentHashMap<>();
 
-    private InMemoryUserPostDAOSingleton() {
+    private InMemoryUserPostDAO() {
     }
 
-    public static InMemoryUserPostDAOSingleton getInstance() {
+    public static InMemoryUserPostDAO getInstance() {
         if (instance == null) {
-            synchronized (InMemoryUserPostDAOSingleton.class) {
+            synchronized (InMemoryUserPostDAO.class) {
                 if (instance == null) {
-                    instance = new InMemoryUserPostDAOSingleton();
+                    instance = new InMemoryUserPostDAO();
                 }
             }
         }
