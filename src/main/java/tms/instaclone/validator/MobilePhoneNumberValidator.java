@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class MobilePhoneNumberValidator {
     public static final String PATH_COUNTRY_CALLING_CODE_PROPERTIES = "src/main/resources/countrycallingcode.properties";
-    public static final String REGEX_PHONE_NUMBER = "\\d{8,11}";
+    public static final String REGEX_PHONE_NUMBER = "(^(\\+)?((\\d{2,3}) ?\\d|\\d)(([ -]?\\d)|( ?(\\d{2,3}) ?)){5,12}\\d$)";
 
     public static boolean isValid(MobilePhoneNumber mobilePhoneNumber) {
         return mobilePhoneNumber != null && isValidCountryCallingCode(mobilePhoneNumber.getCountryCallingCode()) &&
