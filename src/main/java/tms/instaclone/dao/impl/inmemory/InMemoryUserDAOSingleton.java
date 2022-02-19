@@ -4,6 +4,7 @@ import tms.instaclone.dao.UserDAO;
 import tms.instaclone.entity.User;
 
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class InMemoryUserDAOSingleton implements UserDAO {
@@ -48,4 +49,23 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
     public boolean save(User user) {
         return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
     }
+
+    @Override
+    public Optional<User> getUserByEmail(String email){
+        Optional<User> optional = dataSource.values().stream().filter(currentUser -> currentUser.getEmail().equals(email)).findAny();
+        return optional;
+    }
+
+    @Override
+    public Optional<User> getUserByUsername(String username) {
+        Optional<User> optional = dataSource.values().stream().filter(currentUser -> currentUser.getUsername().equals(username)).findAny();
+        return optional;
+    }
+
+    @Override
+    public Optional<User> getUserByMobilePhoneNumber(String mobilePhoneNumber) {
+        Optional<User> optional = dataSource.values().stream().filter(currentUser -> currentUser.getMobilePhoneNumber().equals(mobilePhoneNumber)).findAny();
+        return optional;
+    }
 }
+
