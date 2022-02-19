@@ -8,6 +8,7 @@ public class UserPost<T,P> extends Entity{
     private List<T> contentAddresses;
     private String location;
     private int likeCount;
+    private boolean like;
 
     public UserPost() {
     }
@@ -18,6 +19,15 @@ public class UserPost<T,P> extends Entity{
         this.contentAddresses = contentAddresses;
         this.location = location;
         this.likeCount = likeCount;
+        this.like = like;
+    }
+
+    public boolean isLike() {
+        return like;
+    }
+
+    public void setLike(boolean like) {
+        this.like = like;
     }
 
     public String getUserName() {
