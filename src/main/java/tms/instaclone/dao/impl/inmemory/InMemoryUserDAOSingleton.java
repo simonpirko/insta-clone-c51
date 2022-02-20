@@ -1,10 +1,14 @@
 package tms.instaclone.dao.impl.inmemory;
 
 import tms.instaclone.dao.UserDAO;
+import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class InMemoryUserDAOSingleton implements UserDAO {
@@ -63,8 +67,26 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
     }
 
     @Override
-    public Optional<User> getUserByMobilePhoneNumber(String mobilePhoneNumber) {
-        Optional<User> optional = dataSource.values().stream().filter(currentUser -> currentUser.getMobilePhoneNumber().equals(mobilePhoneNumber)).findAny();
+    public Optional<User> getUserByMobilePhoneNumber(String login) {
+
+        String onlynumber = login.replaceAll("[\\s\\-\\(\\)]+", "");
+        Properties properties = new Properties();
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("countrycallingcode.properties");
+        try {
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Optional optional1 = properties.values()
+                .stream()
+                .filter(x->onlynumber.startsWith(x.toString()
+                        .replaceAll(" ", ""))).findFirst();
+        String countryCode = optional1.get().toString().replaceAll(" ","");
+        String number = onlynumber.substring(countryCode.length(), onlynumber.length());
+        MobilePhoneNumber mobilePhoneNumber = new MobilePhoneNumber(countryCode,number);
+        Optional<User> optional = dataSource.values()
+                .stream()
+                .filter(currentUser -> currentUser.getMobilePhoneNumber().equals(mobilePhoneNumber)).findAny();
         return optional;
     }
 }
