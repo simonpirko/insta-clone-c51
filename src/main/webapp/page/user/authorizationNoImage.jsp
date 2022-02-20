@@ -36,23 +36,37 @@
             <div class="brd mb-4">
 
                 <div class="row justify-content-center m-4">
-                    <img src="/page/images/Instagramlogo.png">
+                    <img src="/page/images/instagramlogo.png">
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-10">
 
-                        <form action="/" method="post">
+                        <form action="/accounts/login/" method="post">
 
-                            <div class="row justify-content-center m-2">
-                                <input type="text" name="login" class="form-control form-control-sm"
-                                       placeholder="Телефон, имя пользователя или эл.адрес" required>
-                            </div>
+                            <c:if test="${sessionScope.errormessage==null}">
+                                <div class="row justify-content-center m-2">
+                                    <input type="text" name="login" class="form-control form-control-sm"
+                                           placeholder="Телефон, имя пользователя или эл.адрес" required>
+                                </div>
 
-                            <div class="row justify-content-center m-2">
-                                <input type="text" name="password" class="form-control form-control-sm"
-                                       placeholder="Пароль" required>
-                            </div>
+                                <div class="row justify-content-center m-2">
+                                        <input type="text" name="password" class="form-control form-control-sm"
+                                               placeholder="Пароль" required>
+                                </div>
+                            </c:if>
+
+                            <c:if test="${sessionScope.errormessage!=null}">
+                                    <div class="row justify-content-center m-2">
+                                        <input type="text" name="login" class="form-control form-control-sm"
+                                               value="${sessionScope.login}" required>
+                                    </div>
+
+                                    <div class="row justify-content-center m-2">
+                                        <input type="text" name="password" class="form-control form-control-sm"
+                                               value="${sessionScope.password}" required>
+                                    </div
+                            </c:if>
 
                             <div class="d-grid gap-1 pt-3">
                                 <button type="submit" class="btn btn-info">Войти</button>
@@ -74,9 +88,17 @@
                     </div>
                 </div>
 
+                <c:if test="${sessionScope.errormessage!=null}">
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <p class="text-center" style="color: red" > ${sessionScope.errormessage} </p>
+                    </div>
+                </div>
+                </c:if>
                 <div class="nav justify-content-center">
                     <a class="nav-link" href="  ">Забыли пароль?</a>
                 </div>
+
             </div>
 
             <div class="brd mb-2">
