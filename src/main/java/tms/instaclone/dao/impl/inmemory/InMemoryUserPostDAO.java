@@ -17,7 +17,7 @@ public final class InMemoryUserPostDAO implements UserPostDAO {
 
     public static InMemoryUserPostDAO getInstance() {
         if (instance == null) {
-            synchronized (InMemoryUserPostDAO.class) {
+            synchronized (instance) {
                 if (instance == null) {
                     instance = new InMemoryUserPostDAO();
                 }
@@ -29,15 +29,13 @@ public final class InMemoryUserPostDAO implements UserPostDAO {
     @Override
     public boolean exists(UserPost userPost) {
         if (!userPost.equals(null) && !dataSource.isEmpty()) {
-            return dataSource.values()
-                    .stream()
-                    .anyMatch(currentUserPost -> {
-                                if (!currentUserPost.getName().equals(null)) {
-                                    return currentUserPost.getName().equals(userPost.getName());
-                                } else {
-                                    return false;
-                                }
-                            });
+            return dataSource.values().stream().anyMatch(currentUserPost -> {
+                if (!currentUserPost.getName().equals(null)) {
+                    return currentUserPost.getName().equals(userPost.getName());
+                } else {
+                    return false;
+                }
+            });
         } else {
             return false;
         }
