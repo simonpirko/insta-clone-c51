@@ -30,12 +30,13 @@ public class MobilePhoneNumber extends Entity {
                 .stream()
                 .filter(x->onlynumber.startsWith(x.toString()
                         .replaceAll(" ", ""))).findFirst();
-        String countryCode = optional.get().toString().replaceAll(" ","");
-        String number = onlynumber.substring(countryCode.length(), onlynumber.length());
-        MobilePhoneNumber mobilePhoneNumber = new MobilePhoneNumber(countryCode,number);
-        optional = Optional.empty();
-        optional = Optional.of(mobilePhoneNumber);
-        return optional;
+        if(optional.isPresent()){
+            String countryCode = optional.get().toString().replaceAll(" ","");
+            String number = onlynumber.substring(countryCode.length(), onlynumber.length());
+            MobilePhoneNumber mobilePhoneNumber = new MobilePhoneNumber(countryCode,number);
+            return Optional.of(mobilePhoneNumber);
+        }else return Optional.empty();
+
     }
 
     public String getCountryCallingCode() {
