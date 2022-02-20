@@ -6,6 +6,7 @@ import tms.instaclone.entity.User;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
@@ -71,12 +72,14 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
 
         String onlynumber = login.replaceAll("[\\s\\-\\(\\)]+", "");
         Properties properties = new Properties();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("countrycallingcode.properties");
-        try {
+        try(InputStream inputStream = getClass().getClassLoader().getResourceAsStream("countrycallingcode.properties"))
+        {
             properties.load(inputStream);
-        } catch (IOException e) {
+        }
+        catch (IOException e){
             e.printStackTrace();
         }
+
         Optional optional1 = properties.values()
                 .stream()
                 .filter(x->onlynumber.startsWith(x.toString()
