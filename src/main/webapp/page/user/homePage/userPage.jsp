@@ -35,7 +35,9 @@
             <%@include file="friendsStories.html" %>
 
             <div class="col-12 border bg-white mt-5">
-                place for task INST-17
+                <%@include file="userPost.html" %>
+                <br>
+                <%@include file="userPost.html" %>
             </div>
 
         </div>
