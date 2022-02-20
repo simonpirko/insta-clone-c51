@@ -103,7 +103,7 @@
 
             <div class="brd mb-2">
                 <div class="nav justify-content-center">
-                    <p class="text-center">У вас ещё нет аккаунта?<a href="URL" class="text-decoration-none">
+                    <p class="text-center">У вас ещё нет аккаунта?<a href="/accounts/emailsignup/" class="text-decoration-none">
                         Зарегистрироваться</a></p>
                 </div>
             </div>
