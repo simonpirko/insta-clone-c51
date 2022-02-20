@@ -57,7 +57,9 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
 
     @Override
     public Optional<User> getUserByEmail(String email){
-        Optional<User> optional = dataSource.values().stream().filter(currentUser -> currentUser.getEmail().equals(email)).findAny();
+        Optional<User> optional = dataSource.values().stream()
+                .filter(currentUser -> currentUser.getEmail()!=null)
+                .filter(currentUser -> currentUser.getEmail().equals(email)).findAny();
         return optional;
     }
 
@@ -71,8 +73,13 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
     public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber) {
         Optional<User> optional = dataSource.values()
                 .stream()
+                .filter(currentUser -> currentUser.getMobilePhoneNumber()!=null)
                 .filter(currentUser -> currentUser.getMobilePhoneNumber().equals(mobilePhoneNumber)).findAny();
         return optional;
+    }
+
+    public void listUsers(){
+        dataSource.values().stream().forEach(System.out::println);
     }
 }
 
