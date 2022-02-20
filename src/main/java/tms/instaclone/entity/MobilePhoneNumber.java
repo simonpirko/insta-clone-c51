@@ -1,6 +1,10 @@
 package tms.instaclone.entity;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Properties;
 
 public class MobilePhoneNumber extends Entity {
     private String countryCallingCode;
@@ -9,6 +13,29 @@ public class MobilePhoneNumber extends Entity {
     public MobilePhoneNumber(String countryCallingCode, String phoneNumber) {
         this.countryCallingCode = countryCallingCode;
         this.phoneNumber = phoneNumber;
+    }
+
+    public static Optional<MobilePhoneNumber> getMobilePhoneNumberByLongNumber(String longNumber){
+        String onlynumber = longNumber.replaceAll("[\\s\\-\\(\\)]+", "");
+        Properties properties = new Properties();
+        try(InputStream inputStream = MobilePhoneNumber.class.getClassLoader().getResourceAsStream("countrycallingcode.properties"))
+        {
+            properties.load(inputStream);
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+        Optional optional = properties.values()
+                .stream()
+                .filter(x->onlynumber.startsWith(x.toString()
+                        .replaceAll(" ", ""))).findFirst();
+        String countryCode = optional.get().toString().replaceAll(" ","");
+        String number = onlynumber.substring(countryCode.length(), onlynumber.length());
+        MobilePhoneNumber mobilePhoneNumber = new MobilePhoneNumber(countryCode,number);
+        optional = Optional.empty();
+        optional = Optional.of(mobilePhoneNumber);
+        return optional;
     }
 
     public String getCountryCallingCode() {
@@ -48,4 +75,5 @@ public class MobilePhoneNumber extends Entity {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}' + '}';
     }
+
 }
