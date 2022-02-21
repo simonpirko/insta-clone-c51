@@ -3,18 +3,15 @@ package tms.instaclone.dao.impl.inmemory;
 import tms.instaclone.dao.UserDAO;
 import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public final class InMemoryUserDAOSingleton implements UserDAO {
     private static volatile InMemoryUserDAOSingleton instance;
     private final Map<Long, User> dataSource = new ConcurrentHashMap<>();
+    private static AtomicLong idUser = new  AtomicLong(0);
 
     private InMemoryUserDAOSingleton() {
     }
@@ -52,6 +49,7 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
 
     @Override
     public boolean save(User user) {
+        user.setId(idUser.incrementAndGet());
         return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
     }
 
