@@ -72,7 +72,7 @@
         </div>
         <div class="col-5 d-flex justify-content-start">
             <a class="navbar-brand" href="#">
-                <img src="/page/images/home.jpg" alt="home" height="33px" width="33px">
+                <img src="/page/images/home.jpg" alt="home" height="30px" width="30px">
             </a>
             <a class="navbar-brand" href="#">
                 <img src="/page/images/logo_direct.jpg" alt="direct">
