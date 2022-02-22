@@ -143,244 +143,285 @@
 <main>
 
     <div class="container">
-        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <ul class="nav nav-tabs col-3 mx-auto" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active btn-lg" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Фото</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn-lg" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Видео</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn-lg" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Отметки</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="container">
+            <div class="gallery">
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 38</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 94</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 52</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 4</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 45</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 34</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 41</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 30</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <div class="loader"></div>
         </div>
+            </div>
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="container">
+            <div class="gallery">
+                <div class="gallery-item" tabindex="0">
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 38</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 94</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 52</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 4</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 45</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 34</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 41</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gallery-item" tabindex="0">
+                    <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image" alt="">
+                    <div class="gallery-item-type">
+                        <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
+                    </div>
+                    <div class="gallery-item-info">
+                        <ul>
+                            <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 30</li>
+                            <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="loader"></div>
+        </div></div>
+
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
     </div>
-
-    <div class="container">
-
-        <div class="gallery">
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 56</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1497445462247-4330a224fdb1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 89</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 5</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-type">
-
-                    <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                </div>
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 42</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1502630859934-b3b41d18206c?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-type">
-
-                    <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-
-                </div>
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 38</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1498471731312-b6d2b8280c61?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-type">
-
-                    <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                </div>
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 47</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1515023115689-589c33041d3c?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 94</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 3</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-type">
-
-                    <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                </div>
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 52</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 4</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1515814472071-4d632dbc5d4a?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 66</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1511407397940-d57f68e81203?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-type">
-
-                    <span class="visually-hidden">Gallery</span><i class="fas fa-clone" aria-hidden="true"></i>
-
-                </div>
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 45</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1518481612222-68bbe828ecd1?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 34</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 1</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1505058707965-09a4469a87e4?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 41</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 0</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-            <div class="gallery-item" tabindex="0">
-
-                <img src="https://images.unsplash.com/photo-1423012373122-fff0a5d28cc9?w=500&h=500&fit=crop" class="gallery-image" alt="">
-
-                <div class="gallery-item-type">
-
-                    <span class="visually-hidden">Video</span><i class="fas fa-video" aria-hidden="true"></i>
-
-                </div>
-
-                <div class="gallery-item-info">
-
-                    <ul>
-                        <li class="gallery-item-likes"><span class="visually-hidden">Likes:</span><i class="fas fa-heart" aria-hidden="true"></i> 30</li>
-                        <li class="gallery-item-comments"><span class="visually-hidden">Comments:</span><i class="fas fa-comment" aria-hidden="true"></i> 2</li>
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- End of gallery -->
-
-        <div class="loader"></div>
-
     </div>
-    <!-- End of container -->
 
 </main>
+
 <footer>
     <div class="container">
         <div class="row justify-content-center">
@@ -425,5 +466,8 @@
         </div>
     </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 </html>
