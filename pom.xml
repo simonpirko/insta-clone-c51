@@ -18,6 +18,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <postgresql.version>42.2.24</postgresql.version>
+    <junit-jupiter-api.artifactId>junit-jupiter-api</junit-jupiter-api.artifactId>
   </properties>
 
   <dependencies>
@@ -34,7 +35,7 @@
 
     <dependency>
       <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
+      <artifactId>${junit-jupiter-api.artifactId}</artifactId>
       <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
