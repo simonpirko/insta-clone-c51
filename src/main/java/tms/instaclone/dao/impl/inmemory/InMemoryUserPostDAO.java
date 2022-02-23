@@ -3,6 +3,7 @@ package tms.instaclone.dao.impl.inmemory;
 import tms.instaclone.dao.UserPostDAO;
 import tms.instaclone.entity.UserPost;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -44,6 +45,11 @@ public final class InMemoryUserPostDAO implements UserPostDAO {
     @Override
     public boolean save(UserPost userPost) {
         return userPost != null && dataSource.putIfAbsent(userPost.getId(), userPost) == null;
+    }
+
+    @Override
+    public List<UserPost> findAll() {
+        return new ArrayList<>(dataSource.values());
     }
 
     @Override
