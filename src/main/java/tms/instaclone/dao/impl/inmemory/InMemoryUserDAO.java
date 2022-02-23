@@ -6,23 +6,21 @@ import tms.instaclone.entity.User;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class InMemoryUserDAOSingleton implements UserDAO {
-    private static volatile InMemoryUserDAOSingleton instance;
+public final class InMemoryUserDAO implements UserDAO {
+    private static volatile InMemoryUserDAO instance;
     private final Map<Long, User> dataSource = new ConcurrentHashMap<>();
 
-    private InMemoryUserDAOSingleton() {
+    private InMemoryUserDAO() {
     }
 
-    public static InMemoryUserDAOSingleton getInstance(){
+    public static InMemoryUserDAO getInstance(){
         if (instance == null) {
-            synchronized (InMemoryUserDAOSingleton.class) {
+            synchronized (InMemoryUserDAO.class) {
                 if (instance == null) {
-                    instance = new InMemoryUserDAOSingleton();
+                    instance = new InMemoryUserDAO();
                 }
             }
         }
@@ -52,6 +50,11 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
     @Override
     public boolean save(User user) {
         return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
+    }
+
+    @Override
+    public List<User> findAll() {
+        return new ArrayList<>(dataSource.values());
     }
 
     @Override
