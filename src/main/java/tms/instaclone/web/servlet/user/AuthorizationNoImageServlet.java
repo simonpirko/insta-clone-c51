@@ -1,5 +1,6 @@
 package tms.instaclone.web.servlet.user;
 
+import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
 import tms.instaclone.service.UserServiceSingleton;
 import tms.instaclone.validator.MobilePhoneNumberValidator;
@@ -30,7 +31,12 @@ public class AuthorizationNoImageServlet extends HttpServlet {
         if(UserValidator.isValidEmail(login)){
             optional = UserServiceSingleton.getInstance().getUserByEmail(login);
         }else if(MobilePhoneNumberValidator.isValidPhoneNumber(login)){
-            optional = UserServiceSingleton.getInstance().getUserByMobilePhoneNumber(login);
+
+            if(MobilePhoneNumber.getMobilePhoneNumberByLongNumber(login).isPresent()){
+                MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(login).get();
+                optional = UserServiceSingleton.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber);
+            }
+
         }else if(UserValidator.isValidUsername(login)){
             optional = UserServiceSingleton.getInstance().getUserByUsername(login);
         }

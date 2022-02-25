@@ -25,7 +25,7 @@ public class MobilePhoneNumberValidator {
                 country.load(new FileInputStream(PATH_COUNTRY_CALLING_CODE_PROPERTIES));
                 return country.values()
                         .stream()
-                        .flatMap(callingCode -> Arrays.stream(String.valueOf(callingCode).split(",")))
+                        .flatMap(callingCode -> Arrays.stream(String.valueOf(callingCode).replaceAll(" ", "").split(",")))
                         .anyMatch(Predicate.isEqual(countryCallingCode));
             } catch (IOException e) {
                 e.printStackTrace();

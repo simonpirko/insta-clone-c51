@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Registration</title>
@@ -38,6 +39,9 @@
                     </div>
 
                     <form action="/accounts/emailsignup/" method="post" class="row justify-content-center">
+
+                        <c:if test="${sessionScope.errormessage==null}">
+
                         <div class="row justify-content-center m-1">
                                 <input name="phoneOrEmail" required class="form-control form-control-sm" type="text"
                                        minlength="5"
@@ -72,10 +76,57 @@
                                        placeholder="Пароль"
                                        aria-label=".form-control-sm example">
                         </div>
+                        </c:if>
+
+                        <c:if test="${sessionScope.errormessage!=null}">
+                            <div class="row justify-content-center m-1">
+                                <input name="phoneOrEmail" required class="form-control form-control-sm" type="text"
+                                       minlength="5"
+                                       pattern="(^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$)|([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"
+                                       value="${sessionScope.phoneOrEmail}"
+                                       aria-label=".form-control-sm example">
+                            </div>
+
+                            <div class="row justify-content-center m-1">
+                                <input name="nameAndSurname" required class="form-control form-control-sm" type="text"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z]+(\s+[A-Za-z]+)?"
+                                       value="${sessionScope.nameAndSurname}"
+                                       aria-label=".form-control-sm example">
+                            </div>
+
+                            <div class="row justify-content-center m-1">
+                                <input name="username" required class="form-control form-control-sm" type="text"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z0-9]*"
+                                       value="${sessionScope.username}"
+                                       aria-label=".form-control-sm example">
+                            </div>
+
+                            <div class="row justify-content-center m-1">
+                                <input name="password" required class="form-control form-control-sm" type="password"
+                                       maxlength="30"
+                                       minlength="5"
+                                       pattern="[A-Za-z0-9]*"
+                                       value="${sessionScope.password}"
+                                       aria-label=".form-control-sm example">
+                            </div>
+
+                        </c:if>
+
                         <div class="row justify-content-center m-1">
                             <input name="registration" required class="btn btn-primary" type="submit" value="Регистрация"
                                    aria-label=".form-control-sm example">
                         </div>
+                        <c:if test="${sessionScope.errormessage!=null}">
+                            <div class="row justify-content-center">
+                                <div class="col-8">
+                                    <p class="text-center" style="color: red" > ${sessionScope.errormessage} </p>
+                                </div>
+                            </div>
+                        </c:if>
                     </form>
 
                     <div class="row justify-content-center mt-1">
