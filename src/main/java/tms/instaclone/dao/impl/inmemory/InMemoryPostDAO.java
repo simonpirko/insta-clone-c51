@@ -2,6 +2,7 @@ package tms.instaclone.dao.impl.inmemory;
 
 import tms.instaclone.dao.PostDAO;
 import tms.instaclone.entity.Post;
+import tms.instaclone.entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -38,8 +39,8 @@ public final class InMemoryPostDAO implements PostDAO {
     }
 
     @Override
-    public List<Post> getListPostByUsername(String username) {
-        List<Post> optional = dataSource.values().stream().filter(currentPost -> currentPost.getUserName().equals(username)).collect(Collectors.toList());
+    public List<Post> getListPostByUsername(User user) {
+        List<Post> optional = dataSource.values().stream().filter(currentPost -> currentPost.getOwner().getUsername().equals(user.getUsername())).collect(Collectors.toList());
         return optional;
     }
 

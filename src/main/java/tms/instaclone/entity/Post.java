@@ -2,28 +2,28 @@ package tms.instaclone.entity;
 
 import java.util.List;
 
-public class Post<T, P> extends Entity {
-    private String userName;
+public class Post extends Entity {
+    private User owner;
     private String title;
-    private List<T> VideoOrImagePath;
-    private List<P> userWhoHasMadeLike;
+    private List<String> videoOrImagePath;
+    private List<User> userWhoHasMadeLike;
 
     public Post() {
     }
 
-    public Post(String userName, String title, List<T> videoOrImagePath, List<P> userWhoHasMadeLike) {
-        this.userName = userName;
+    public Post(User owner, String title, List<String> videoOrImagePath, List<User> userWhoHasMadeLike) {
+        this.owner = owner;
         this.title = title;
-        VideoOrImagePath = videoOrImagePath;
+        this.videoOrImagePath = videoOrImagePath;
         this.userWhoHasMadeLike = userWhoHasMadeLike;
     }
 
-    public String getUserName() {
-        return userName;
+    public User getOwner() {
+        return owner;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public String getTitle() {
@@ -34,19 +34,19 @@ public class Post<T, P> extends Entity {
         this.title = title;
     }
 
-    public List<T> getVideoOrImagePath() {
-        return VideoOrImagePath;
+    public List<String> getVideoOrImagePath() {
+        return videoOrImagePath;
     }
 
-    public void setVideoOrImagePath(List<T> videoOrImagePath) {
-        VideoOrImagePath = videoOrImagePath;
+    public void setVideoOrImagePath(List<String> videoOrImagePath) {
+        this.videoOrImagePath = videoOrImagePath;
     }
 
-    public List<P> getUserWhoHasMadeLike() {
+    public List<User> getUserWhoHasMadeLike() {
         return userWhoHasMadeLike;
     }
 
-    public void setUserWhoHasMadeLike(List<P> userWhoHasMadeLike) {
+    public void setUserWhoHasMadeLike(List<User> userWhoHasMadeLike) {
         this.userWhoHasMadeLike = userWhoHasMadeLike;
     }
 }

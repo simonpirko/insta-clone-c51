@@ -3,6 +3,7 @@ package tms.instaclone.service;
 import tms.instaclone.dao.PostDAO;
 import tms.instaclone.dao.impl.inmemory.InMemoryPostDAO;
 import tms.instaclone.entity.Post;
+import tms.instaclone.entity.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,8 +31,8 @@ public final class PostService {
         return !postDAO.exists(post) && postDAO.save(post);
     }
 
-    public List<Post> getListPostByUsername(String username){
-        return postDAO.getListPostByUsername(username);
+    public List<Post> getListPostByUsername(User user){
+        return postDAO.getListPostByUsername(user);
     }
 
     public Optional<Post> getPostById(long id) {
