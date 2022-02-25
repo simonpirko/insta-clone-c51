@@ -1,8 +1,7 @@
 package tms.instaclone.web.servlet.user;
 
-import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
-import tms.instaclone.service.UserServiceSingleton;
+import tms.instaclone.service.UserService;
 import tms.instaclone.validator.MobilePhoneNumberValidator;
 import tms.instaclone.validator.UserValidator;
 import javax.servlet.ServletException;
@@ -29,16 +28,11 @@ public class AuthorizationNoImageServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         if(UserValidator.isValidEmail(login)){
-            optional = UserServiceSingleton.getInstance().getUserByEmail(login);
+            optional = UserService.getInstance().getUserByEmail(login);
         }else if(MobilePhoneNumberValidator.isValidPhoneNumber(login)){
-
-            if(MobilePhoneNumber.getMobilePhoneNumberByLongNumber(login).isPresent()){
-                MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(login).get();
-                optional = UserServiceSingleton.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber);
-            }
-
+            optional = UserService.getInstance().getUserByMobilePhoneNumber(login);
         }else if(UserValidator.isValidUsername(login)){
-            optional = UserServiceSingleton.getInstance().getUserByUsername(login);
+            optional = UserService.getInstance().getUserByUsername(login);
         }
         if(optional.isPresent()){
             User user = optional.get();

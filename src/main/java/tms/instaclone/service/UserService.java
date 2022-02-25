@@ -1,26 +1,24 @@
 package tms.instaclone.service;
 
-import tms.instaclone.dao.DataAccessObject;
 import tms.instaclone.dao.UserDAO;
-import tms.instaclone.dao.impl.inmemory.InMemoryUserDAOSingleton;
-import tms.instaclone.entity.MobilePhoneNumber;
+import tms.instaclone.dao.impl.inmemory.InMemoryUserDAO;
 import tms.instaclone.entity.User;
 import tms.instaclone.validator.UserValidator;
 
 import java.util.Optional;
 
-public final class UserServiceSingleton {
-    private static volatile UserServiceSingleton instance;
-    private final UserDAO userDAO = InMemoryUserDAOSingleton.getInstance();
+public final class UserService {
+    private static volatile UserService instance;
+    private final UserDAO userDAO = InMemoryUserDAO.getInstance();
 
-    private UserServiceSingleton() {
+    private UserService() {
     }
 
-    public static UserServiceSingleton getInstance(){
+    public static UserService getInstance(){
         if (instance == null) {
-            synchronized (UserServiceSingleton.class) {
+            synchronized (UserService.class) {
                 if (instance == null) {
-                    instance = new UserServiceSingleton();
+                    instance = new UserService();
                 }
             }
         }
@@ -39,7 +37,7 @@ public final class UserServiceSingleton {
         return userDAO.getUserByUsername(username);
     }
 
-    public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber){
+    public Optional<User> getUserByMobilePhoneNumber(String mobilePhoneNumber){
         return userDAO.getUserByMobilePhoneNumber(mobilePhoneNumber);
     }
 
