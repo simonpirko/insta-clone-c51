@@ -6,6 +6,7 @@ public final class ServletConstants {
     public static final String PATH_PASSWORD_RESET_PAGE_JSP = "/page/user/passwordResetPage.jsp";
     public static final String PATH_AUTHORIZATION_NO_IMAGE_JSP = "/page/user/authorizationNoImage.jsp";
     public static final String PATH_USER_PROFILE_JSP = "/page/user/userProfile.jsp";
+    public static final String PATH_USER_HOMEPAGE_JSP = "/page/user/homePage/userPage.jsp";
 
 
     public static final String NAME_REGISTRATION_SERVLET = "RegistrationServlet";

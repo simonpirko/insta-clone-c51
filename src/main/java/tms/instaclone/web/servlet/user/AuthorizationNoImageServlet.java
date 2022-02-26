@@ -42,6 +42,8 @@ public class AuthorizationNoImageServlet extends HttpServlet {
             User user = optional.get();
             if(user.getPassword().equals(password)){
                 req.getSession().setAttribute("user", user);
+                req.getServletContext().getRequestDispatcher(PATH_USER_HOMEPAGE_JSP).forward(req, resp);
+
             }else {
                 req.getSession().setAttribute("login", login);
                 req.getSession().setAttribute("password", password);
