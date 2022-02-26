@@ -39,6 +39,11 @@ public final class InMemoryPostDAO implements PostDAO {
     }
 
     @Override
+    public List<Post> findAll() {
+        return null;
+    }
+
+    @Override
     public List<Post> getListPostByUsername(User user) {
         List<Post> optional = dataSource.values().stream().filter(currentPost -> currentPost.getOwner().getUsername().equals(user.getUsername())).collect(Collectors.toList());
         return optional;
@@ -49,4 +54,5 @@ public final class InMemoryPostDAO implements PostDAO {
         Optional<Post> post = dataSource.values().stream().filter(currentPost -> currentPost.getId() == id).findAny();
         return post;
     }
+
 }

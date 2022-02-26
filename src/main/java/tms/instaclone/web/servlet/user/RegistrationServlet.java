@@ -1,9 +1,10 @@
 package tms.instaclone.web.servlet.user;
 
-import tms.instaclone.dao.impl.inmemory.InMemoryUserDAOSingleton;
+
 import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
-import tms.instaclone.service.UserServiceSingleton;
+import tms.instaclone.service.UserService;
+
 import tms.instaclone.validator.MobilePhoneNumberValidator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,7 +38,7 @@ public class RegistrationServlet extends HttpServlet {
         if (names.length>1){
             secondName=names[1];
         }
-        if(UserServiceSingleton.getInstance().getUserByUsername(username).isPresent()){
+        if(UserService.getInstance().getUserByUsername(username).isPresent()){
             setAttribute(req);
             req.getSession().setAttribute("errormessage", "Этот никнейм уже используется");
             req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
@@ -45,12 +46,12 @@ public class RegistrationServlet extends HttpServlet {
             if(MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmail)){
                 if(MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).isPresent()){
                     MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).get();
-                    if(UserServiceSingleton.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).isPresent()){
+                    if(UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).isPresent()){
                         setAttribute(req);
                         req.getSession().setAttribute("errormessage", "Этот номер телефона уже используется пользователем");
                         req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
                     }else{
-                        InMemoryUserDAOSingleton.getInstance().save(new User(null,mobilePhoneNumber,
+                        UserService.getInstance().save(new User(null,mobilePhoneNumber,
                                 firstName,secondName, username,
                                 password, null));
                         req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
@@ -60,12 +61,12 @@ public class RegistrationServlet extends HttpServlet {
                     req.getSession().setAttribute("errormessage", "Не правильный номер телефона.");
                     req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
                 }
-            }else if(UserServiceSingleton.getInstance().getUserByEmail(phoneOrEmail).isPresent()){
+            }else if(UserService.getInstance().getUserByEmail(phoneOrEmail).isPresent()){
                 setAttribute(req);
                 req.getSession().setAttribute("errormessage", "Этот имэйл уже используется пользователем");
                 req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
             }else {
-                InMemoryUserDAOSingleton.getInstance().save(new User(phoneOrEmail,null,
+                UserService.getInstance().save(new User(phoneOrEmail,null,
                         firstName,secondName, username,
                         password, null));
                 req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);

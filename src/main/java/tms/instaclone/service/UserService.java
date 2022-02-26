@@ -2,6 +2,7 @@ package tms.instaclone.service;
 
 import tms.instaclone.dao.UserDAO;
 import tms.instaclone.dao.impl.inmemory.InMemoryUserDAO;
+import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
 import tms.instaclone.validator.UserValidator;
 
@@ -37,7 +38,7 @@ public final class UserService {
         return userDAO.getUserByUsername(username);
     }
 
-    public Optional<User> getUserByMobilePhoneNumber(String mobilePhoneNumber){
+    public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber){
         return userDAO.getUserByMobilePhoneNumber(mobilePhoneNumber);
     }
 
