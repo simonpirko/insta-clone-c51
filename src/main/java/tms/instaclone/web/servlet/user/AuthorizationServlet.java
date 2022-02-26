@@ -23,22 +23,17 @@ public class AuthorizationServlet extends HttpServlet {
     public void init(){
         User user1 = new User("SashaGrey@gmail.com",new MobilePhoneNumber("+375", "294563345"),
                 "Sasha", "Grey", "Grey1", "123457", LocalDate.now().minusYears(10L));
-
         User user2 = new User("Turner@gmail.com",new MobilePhoneNumber("+375", "294563675"),
                 "Alex", "Turner", "Turner1", "1233423", LocalDate.now().minusYears(10L));
-
         User user3 = new User("Richard@gmail.com",new MobilePhoneNumber("+375", "334587671"),
                 "Richard", "Hammond", "Hammond1", "1666663", LocalDate.now().minusYears(10L));
-
         User user4 = new User("Jeremy@gmail.com",new MobilePhoneNumber("+375", "339987688"),
                 "Jeremy", "Clarkson", "Clarkson1", "1356763", LocalDate.now().minusYears(10L));
-
         User user5 = new User("James@gmail.com",new MobilePhoneNumber("+375", "333577688"),
                 "James", "May", "May1", "999955", LocalDate.now().minusYears(10L));
 
         Post post1User1 = new Post(user1,"Post1", List.of("/user_data_storage/userid_1_imgid_1.jpg", "/user_data_storage/userid_1_imgid_2.jpg"),
                 List.of(user1, user2, user3));
-
         Post post2User1 = new Post(user1,"Post2", List.of("/user_data_storage/userid_1_imgid_3.jpg", "/user_data_storage/userid_1_imgid_4.jpg"),
                 List.of(user3, user4));
         Post post3User1 = new Post(user1,"Post3", List.of("/user_data_storage/userid_1_imgid_5.jpg", "/user_data_storage/userid_1_imgid_6.jpg"),
