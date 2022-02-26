@@ -8,10 +8,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public final class InMemoryUserDAO implements UserDAO {
     private static volatile InMemoryUserDAO instance;
     private final Map<Long, User> dataSource = new ConcurrentHashMap<>();
+    private static AtomicLong idUser = new AtomicLong(0);
 
     private InMemoryUserDAO() {
     }
@@ -49,6 +51,7 @@ public final class InMemoryUserDAO implements UserDAO {
 
     @Override
     public boolean save(User user) {
+        user.setId(idUser.incrementAndGet());
         return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
     }
 
@@ -70,23 +73,8 @@ public final class InMemoryUserDAO implements UserDAO {
     }
 
     @Override
-    public Optional<User> getUserByMobilePhoneNumber(String login) {
+    public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber) {
 
-        String onlynumber = login.replaceAll("[\\s\\-\\(\\)]+", "");
-        Properties properties = new Properties();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("countrycallingcode.properties");
-        try {
-            properties.load(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Optional optional1 = properties.values()
-                .stream()
-                .filter(x->onlynumber.startsWith(x.toString()
-                        .replaceAll(" ", ""))).findFirst();
-        String countryCode = optional1.get().toString().replaceAll(" ","");
-        String number = onlynumber.substring(countryCode.length(), onlynumber.length());
-        MobilePhoneNumber mobilePhoneNumber = new MobilePhoneNumber(countryCode,number);
         Optional<User> optional = dataSource.values()
                 .stream()
                 .filter(currentUser -> currentUser.getMobilePhoneNumber().equals(mobilePhoneNumber)).findAny();
