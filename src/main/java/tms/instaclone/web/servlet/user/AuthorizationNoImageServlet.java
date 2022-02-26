@@ -47,14 +47,14 @@ public class AuthorizationNoImageServlet extends HttpServlet {
             }else {
                 req.getSession().setAttribute("login", login);
                 req.getSession().setAttribute("password", password);
-                req.getSession().setAttribute("errormessage", "К сожалению, вы ввели неправильный пароль. Проверьте свой пароль еще раз.");
-                req.getServletContext().getRequestDispatcher("/page/user/authorizationNoImage.jsp").forward(req, resp);
+                req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_ENTER_NUMBER);
+                req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_NO_IMAGE_JSP).forward(req, resp);
             }
         }else {
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);
-            req.getSession().setAttribute("errormessage", "Введенное вами имя пользователя не принадлежит аккаунту. Проверьте свое имя пользователя и повторите попытку.");
-            req.getServletContext().getRequestDispatcher("/page/user/authorizationNoImage.jsp").forward(req, resp);
+            req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_ENTER_USERNAME);
+            req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_NO_IMAGE_JSP).forward(req, resp);
         }
     }
 }

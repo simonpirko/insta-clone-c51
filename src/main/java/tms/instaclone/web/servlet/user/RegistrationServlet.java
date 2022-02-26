@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDate;
 
 
 import static tms.instaclone.web.servlet.ServletConstants.*;
@@ -32,6 +33,17 @@ public class RegistrationServlet extends HttpServlet {
         String nameAndSurname = req.getParameter("nameAndSurname");
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        int day = Integer.parseInt(req.getParameter("day"));
+        int month = Integer.parseInt(req.getParameter("month"));
+        int year = Integer.parseInt(req.getParameter("year"));
+        LocalDate localDate=null;
+        try{
+            localDate = LocalDate.of(year,month,day);
+        }catch (Exception e){
+            setAttribute(req);
+            req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_DATE);
+            req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
+        }
         String[] names = nameAndSurname.split("\\s+");
         String firstName = names[0];
         String secondName=null;
@@ -40,7 +52,7 @@ public class RegistrationServlet extends HttpServlet {
         }
         if(UserService.getInstance().getUserByUsername(username).isPresent()){
             setAttribute(req);
-            req.getSession().setAttribute("errormessage", "Этот никнейм уже используется");
+            req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_USERNAME);
             req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
         }else {
             if(MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmail)){
@@ -48,27 +60,35 @@ public class RegistrationServlet extends HttpServlet {
                     MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).get();
                     if(UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).isPresent()){
                         setAttribute(req);
-                        req.getSession().setAttribute("errormessage", "Этот номер телефона уже используется пользователем");
+                        req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_NUMBER);
                         req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
                     }else{
-                        UserService.getInstance().save(new User(null,mobilePhoneNumber,
+                        if(!UserService.getInstance().save(new User(null,mobilePhoneNumber,
                                 firstName,secondName, username,
-                                password, null));
+                                password, localDate))){
+                            setAttribute(req);
+                            req.getSession().setAttribute("errormessage", ERRORMESSAGE_ADD_USER);
+                            req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
+                        }
                         req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
                     }
                 }else {
                     setAttribute(req);
-                    req.getSession().setAttribute("errormessage", "Не правильный номер телефона.");
+                    req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_NUMBER);
                     req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
                 }
             }else if(UserService.getInstance().getUserByEmail(phoneOrEmail).isPresent()){
                 setAttribute(req);
-                req.getSession().setAttribute("errormessage", "Этот имэйл уже используется пользователем");
+                req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_MAIL);
                 req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
             }else {
-                UserService.getInstance().save(new User(phoneOrEmail,null,
+                if(!UserService.getInstance().save(new User(phoneOrEmail,null,
                         firstName,secondName, username,
-                        password, null));
+                        password, localDate))){
+                    setAttribute(req);
+                    req.getSession().setAttribute("errormessage", ERRORMESSAGE_ADD_USER);
+                    req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
+                }
                 req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
             }
         }
@@ -79,5 +99,9 @@ public class RegistrationServlet extends HttpServlet {
         req.getSession().setAttribute("nameAndSurname", req.getParameter("nameAndSurname"));
         req.getSession().setAttribute("username", req.getParameter("username"));
         req.getSession().setAttribute("password", req.getParameter("password"));
+        req.getSession().setAttribute("day", req.getParameter("day"));
+        req.getSession().setAttribute("month", req.getParameter("month"));
+        req.getSession().setAttribute("year", req.getParameter("year"));
+
     }
 }
