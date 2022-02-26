@@ -4,6 +4,7 @@ import tms.instaclone.entity.MobilePhoneNumber;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Properties;
 import java.util.function.Predicate;
@@ -21,8 +22,8 @@ public class MobilePhoneNumberValidator {
     public static boolean isValidCountryCallingCode(String countryCallingCode) {
         if (countryCallingCode != null && !countryCallingCode.isBlank()) {
             Properties country = new Properties();
-            try {
-                country.load(new FileInputStream(PATH_COUNTRY_CALLING_CODE_PROPERTIES));
+            try (InputStream inputStream = MobilePhoneNumberValidator.class.getClassLoader().getResourceAsStream("countrycallingcode.properties")){
+                country.load(inputStream);
                 return country.values()
                         .stream()
                         .flatMap(callingCode -> Arrays.stream(String.valueOf(callingCode).replaceAll(" ", "").split(",")))
