@@ -5,6 +5,7 @@ import tms.instaclone.dao.impl.inmemory.InMemoryStoryDAO;
 import tms.instaclone.entity.Story;
 import tms.instaclone.entity.User;
 
+import java.util.Collections;
 import java.util.List;
 
 public class StoryService {
@@ -30,8 +31,10 @@ public class StoryService {
     }
 
     public List<Story> findAllByUser(User user) {
-        if (user == null ) {
+        if (user != null ) {
             return storyDAO.findAllByUser(user);
+        } else {
+            return Collections.emptyList();
         }
     }
 }
