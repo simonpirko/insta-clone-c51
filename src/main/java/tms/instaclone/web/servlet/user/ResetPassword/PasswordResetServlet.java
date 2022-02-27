@@ -1,5 +1,6 @@
 package tms.instaclone.web.servlet.user.ResetPassword;
 
+import tms.instaclone.entity.User;
 import tms.instaclone.service.UserService;
 import tms.instaclone.validator.MobilePhoneNumberValidator;
 import tms.instaclone.web.servlet.Constants;
@@ -9,7 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Random;
 
 import static tms.instaclone.web.servlet.Constants.*;
 
@@ -18,7 +21,7 @@ public class PasswordResetServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getServletContext().getRequestDispatcher(PATH_PASSWORD_RESET_PAGE_JSP).forward(req, resp);
+        req.getServletContext().getRequestDispatcher(PATH_PASSWORD_RESET_JSP).forward(req, resp);
     }
 
     @Override
@@ -35,57 +38,39 @@ public class PasswordResetServlet extends HttpServlet {
 
 
         if (isUserName) {
+            HttpSession session = req.getSession();
+            User user = UserService.getInstance().getUserByUsername(phoneOrEmailOrUserName).get();
 
+            Random random = new Random(100000000);
+            int secretWorld = random.nextInt();
+
+            session.setAttribute("user", user);
+            session.setAttribute("secretWorld", secretWorld);
+
+            req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else if (isPhoneNumber) {
+            HttpSession session = req.getSession();
 
+
+            Random random = new Random(100000000);
+            int secretWorld = random.nextInt();
+            session.setAttribute("secretWorld", secretWorld);
+
+            req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else if (isEmail) {
+            HttpSession session = req.getSession();
+            User user = UserService.getInstance().getUserByEmail(phoneOrEmailOrUserName).get();
 
+            Random random = new Random(100000000);
+            int secretWorld = random.nextInt();
+
+            session.setAttribute("user", user);
+            session.setAttribute("secretWorld", secretWorld);
+
+            req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else {
             req.setAttribute("msgError", Constants.ERRORMESSAGE_RESET_USER_PHONE_EMAIL);
-            req.getServletContext().getRequestDispatcher(Constants.PATH_RESET_PASSWORD_JSP).forward(req, resp);
+            req.getServletContext().getRequestDispatcher(Constants.PATH_PASSWORD_RESET_JSP).forward(req, resp);
         }
-
-//        if (UserService.getInstance().getUserByUsername(username).isPresent()) {
-//            setAttribute(req);
-//            req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_USERNAME);
-//            req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-//        } else {
-//            if (MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmail)) {
-//                if (MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).isPresent()) {
-//                    MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).get();
-//                    if (UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).isPresent()) {
-//                        setAttribute(req);
-//                        req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_NUMBER);
-//                        req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-//                    } else {
-//                        if (!UserService.getInstance().save(new User(null, mobilePhoneNumber,
-//                                firstName, secondName, username,
-//                                password, localDate))) {
-//                            setAttribute(req);
-//                            req.getSession().setAttribute("errormessage", ERRORMESSAGE_ADD_USER);
-//                            req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-//                        }
-//                        req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
-//                    }
-//                } else {
-//                    setAttribute(req);
-//                    req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_NUMBER);
-//                    req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-//                }
-//            } else if (UserService.getInstance().getUserByEmail(phoneOrEmail).isPresent()) {
-//                setAttribute(req);
-//                req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_MAIL);
-//                req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-//            } else {
-//                if (!UserService.getInstance().save(new User(phoneOrEmail, null,
-//                        firstName, secondName, username,
-//                        password, localDate))) {
-//                    setAttribute(req);
-//                    req.getSession().setAttribute("errormessage", ERRORMESSAGE_ADD_USER);
-//                    req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-//                }
-//                req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
-//            }
-//        }
     }
 }
