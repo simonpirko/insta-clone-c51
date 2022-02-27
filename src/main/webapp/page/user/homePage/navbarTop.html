@@ -22,8 +22,30 @@
                 <img src="/page/images/logo_direct.jpg" alt="direct">
             </a>
             <a class="navbar-brand" href="#">
-                <img src="/page/images/log_new_post.jpg" alt="new_post">
+                <img src="/page/images/log_new_post.jpg " data-bs-toggle="modal" data-bs-target="#exampleModal" alt="new_post">
             </a>
+            <form enctype="multipart/form-data" action="/addpost" method="post">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group">
+                                    <span class="input-group-text">Подпись</span>
+                                    <textarea class="form-control" aria-label="With textarea"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="file" class="form-control" name="file" />
+                                <button type="submit" class="btn btn-primary">Save post</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
             <a class="navbar-brand" href="#">
                 <img src="/page/images/logo_explore.jpg" alt="explore">
             </a>
