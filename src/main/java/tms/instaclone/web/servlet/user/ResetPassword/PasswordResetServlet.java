@@ -42,10 +42,10 @@ public class PasswordResetServlet extends HttpServlet {
             User user = UserService.getInstance().getUserByUsername(phoneOrEmailOrUserName).get();
 
             Random random = new Random(100000000);
-            int secretWorld = random.nextInt();
+            int secretWord = random.nextInt();
 
             session.setAttribute("user", user);
-            session.setAttribute("secretWorld", secretWorld);
+            session.setAttribute("secretWord", secretWord);
 
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else if (isPhoneNumber) {
@@ -54,7 +54,7 @@ public class PasswordResetServlet extends HttpServlet {
 
             Random random = new Random(100000000);
             int secretWorld = random.nextInt();
-            session.setAttribute("secretWorld", secretWorld);
+            session.setAttribute("secretWord", secretWorld);
 
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else if (isEmail) {
@@ -65,7 +65,7 @@ public class PasswordResetServlet extends HttpServlet {
             int secretWorld = random.nextInt();
 
             session.setAttribute("user", user);
-            session.setAttribute("secretWorld", secretWorld);
+            session.setAttribute("secretWord", secretWorld);
 
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else {

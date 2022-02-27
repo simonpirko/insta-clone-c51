@@ -1,6 +1,7 @@
 package tms.instaclone.web.servlet.user.ResetPassword;
 
 import tms.instaclone.entity.User;
+import tms.instaclone.service.UserService;
 import tms.instaclone.web.servlet.Constants;
 
 import javax.servlet.ServletException;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static tms.instaclone.web.servlet.Constants.PATH_PASSWORD_UPDATE_JSP;
+import static tms.instaclone.web.servlet.Constants.*;
 
 @WebServlet(urlPatterns = Constants.URL_PASSWORD_UPDATE_SERVLET, name = Constants.NAME_PASSWORD_UPDATE_SERVLET)
 public class PasswordUpdateServlet extends HttpServlet {
@@ -24,14 +25,24 @@ public class PasswordUpdateServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        String secretWorld = (String) session.getAttribute("secretWorld");
+        String secretWord = String.valueOf(session.getAttribute("secretWord"));
         User user = (User) session.getAttribute("user");
         String inputSecretWord = req.getParameter("inputSecretWord");
         String updatePassword = req.getParameter("updatePassword");
 
-        if (!secretWorld.equals(inputSecretWord)) {
-            req.setAttribute("msgError", "ds");
+        if (!secretWord.equals(inputSecretWord)) {
+            req.setAttribute("msgError", ERRORMESSAGE_INVALID_SECRET_WORD);
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
+        } else {
+            user.setPassword(updatePassword);
+
+            if (!UserService.getInstance().update(user)) {
+                req.getSession().setAttribute("msgErrorUpdatePassword", ERRORMESSAGE_UPDATE_USER_PASSWORD);
+                req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
+            }
+
+            session.invalidate();
+            resp.sendRedirect(URL_AUTHORIZATION_SERVLET);
         }
 
     }

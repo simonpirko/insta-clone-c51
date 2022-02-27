@@ -31,7 +31,9 @@ public final class Constants {
     public static final String ERRORMESSAGE_INCORRECT_ENTER_NUMBER = "К сожалению, вы ввели неправильный пароль. Проверьте свой пароль еще раз.";
     public static final String ERRORMESSAGE_INCORRECT_ENTER_USERNAME = "Введенное вами имя пользователя не принадлежит аккаунту. Проверьте свое имя пользователя и повторите попытку.";
     public static final String ERRORMESSAGE_ADD_USER = "Мы не можем добавить такого пользователя, пожалуйста, проверьте правильность данных";
+    public static final String ERRORMESSAGE_UPDATE_USER_PASSWORD = "Мы не можем обновить пароль. Попробуйте еще раз";
     public static final String ERRORMESSAGE_RESET_USER_PHONE_EMAIL = "Нет такого пользователя";
+    public static final String ERRORMESSAGE_INVALID_SECRET_WORD = "Секретная фраза введена неверно";
 
     private Constants() {
     }

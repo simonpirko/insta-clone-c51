@@ -30,15 +30,13 @@
                 <br>
                 <br>
                 <div class="row justify-content-center">
-                    <c:if test="${requestScope.msgError != null}">
-                        ${requestScope.msgError}
-                    </c:if>
-                     Секретная фраза: ${sessionScope.secretWorld}
+                     Секретная фраза: ${sessionScope.secretWord}
                     <label><input type="text" name="inputSecretWord"
                                   required
                                   placeholder="Секретная фраза">
                     </label>
-                    <br><br >
+                    ${requestScope.msgError}
+                    <br><br>
                     <label><input type="password" name="updatePassword"
                                   maxlength="30"
                                   minlength="5"
@@ -49,6 +47,7 @@
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary">Обновить пароль</button>
+                ${requestScope.msgErrorUpdatePassword}
             </div>
         </form>
         <br>
