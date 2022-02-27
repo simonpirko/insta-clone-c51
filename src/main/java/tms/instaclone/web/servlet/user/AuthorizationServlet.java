@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
-import static tms.instaclone.web.servlet.ServletConstants.*;
+import static tms.instaclone.web.servlet.Constants.*;
 
 @WebServlet(urlPatterns = URL_AUTHORIZATION_SERVLET, name = NAME_AUTHORIZATION_SERVLET)
 public class AuthorizationServlet extends HttpServlet {

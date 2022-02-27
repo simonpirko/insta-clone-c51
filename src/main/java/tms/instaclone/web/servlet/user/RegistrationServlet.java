@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 
-import static tms.instaclone.web.servlet.ServletConstants.*;
+import static tms.instaclone.web.servlet.Constants.*;
 
 @WebServlet(urlPatterns = URL_REGISTRATION_SERVLET, name = NAME_REGISTRATION_SERVLET)
 public class RegistrationServlet extends HttpServlet {
