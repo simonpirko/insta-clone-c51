@@ -3,6 +3,7 @@ package tms.instaclone.web.servlet.user;
 import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.Post;
 import tms.instaclone.entity.User;
+import tms.instaclone.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +22,9 @@ public class AuthorizationServlet extends HttpServlet {
 
     @Override
     public void init(){
+
         User user1 = new User("SashaGrey@gmail.com",new MobilePhoneNumber("+375", "294563345"),
-                "Sasha", "Grey", "Grey1", "123457", LocalDate.now().minusYears(10L));
+                "Sasha", "Grey", "Grey1", "123457", LocalDate.of(2000,1,1));
         User user2 = new User("Turner@gmail.com",new MobilePhoneNumber("+375", "294563675"),
                 "Alex", "Turner", "Turner1", "1233423", LocalDate.now().minusYears(10L));
         User user3 = new User("Richard@gmail.com",new MobilePhoneNumber("+375", "334587671"),
@@ -31,6 +33,7 @@ public class AuthorizationServlet extends HttpServlet {
                 "Jeremy", "Clarkson", "Clarkson1", "1356763", LocalDate.now().minusYears(10L));
         User user5 = new User("James@gmail.com",new MobilePhoneNumber("+375", "333577688"),
                 "James", "May", "May1", "999955", LocalDate.now().minusYears(10L));
+        UserService.getInstance().save(user1);
 
         Post post1User1 = new Post(user1,"Post1", List.of("/user_data_storage/userid_1_imgid_1.jpg", "/user_data_storage/userid_1_imgid_2.jpg"),
                 List.of(user1, user2, user3));
