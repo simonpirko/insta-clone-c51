@@ -1,15 +1,19 @@
 package tms.instaclone.entity;
 
+import tms.instaclone.enums.PostType;
+
 import java.util.List;
 import java.util.Objects;
 
 public abstract class Post extends Entity {
     private User owner;
+    private PostType postType;
     private List<String> videoOrImagePath;
     private List<User> userWhoHasMadeLike;
 
-    public Post(User owner, List<String> videoOrImagePath) {
+    public Post(User owner, PostType postType, List<String> videoOrImagePath) {
         this.owner = owner;
+        this.postType = postType;
         this.videoOrImagePath = videoOrImagePath;
     }
 
@@ -19,6 +23,14 @@ public abstract class Post extends Entity {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public PostType getPostType() {
+        return postType;
+    }
+
+    public void setPostType(PostType postType) {
+        this.postType = postType;
     }
 
     public List<String> getVideoOrImagePath() {
@@ -42,20 +54,22 @@ public abstract class Post extends Entity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return owner.equals(post.owner) && videoOrImagePath.equals(post.videoOrImagePath);
+        return owner.equals(post.owner) && postType == post.postType && videoOrImagePath.equals(post.videoOrImagePath);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(owner, videoOrImagePath);
+        return Objects.hash(owner, postType, videoOrImagePath);
     }
 
     @Override
     public String toString() {
-        return "Post{" +
+        return super.toString() +
+                "Post{" +
                 "owner=" + owner +
+                ", postType=" + postType +
                 ", videoOrImagePath=" + videoOrImagePath +
                 ", userWhoHasMadeLike=" + userWhoHasMadeLike +
-                '{';
+                '}' + '}';
     }
 }
