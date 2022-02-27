@@ -1,4 +1,4 @@
-package tms.instaclone.web.servlet.user;
+package tms.instaclone.web.servlet.user.ResetPassword;
 
 import tms.instaclone.service.UserService;
 import tms.instaclone.validator.MobilePhoneNumberValidator;
