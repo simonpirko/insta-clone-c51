@@ -53,7 +53,7 @@
                     </label>
                 </div>
                 <br>
-                <button type="button" class="btn btn-primary">Получить ссылку для входа</button>
+                <button type="submit" class="btn btn-primary">Получить ссылку для входа</button>
                 <br>
                 <br>
                 <div class="container">
