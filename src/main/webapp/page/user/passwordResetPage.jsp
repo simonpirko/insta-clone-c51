@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>Восстановление пароля</title>
@@ -15,7 +17,7 @@
 <br>
 <div class="row justify-content-md-center">
     <div class="col-md-4">
-        <form action="/passwordReset" method="post" class="row justify-content-center">
+        <form action="/accounts/password/reset/" method="post" class="row justify-content-center">
             <div style="text-align: center;">
                 <a class="navbar-brand" href="#">
                     <img src="/page/images/lock.png" alt="lock" width="103" height="100"></a>
@@ -24,8 +26,13 @@
                 <h6>пользователя или номер телефона, и мы</h6>
                 <h6>отправим вам ссылку для восстановления</h6>
                 <h6>доступа к аккаунту.</h6><br>
+
                 <div class="row justify-content-center">
-                    <label><input type="text" name="phoneOrEmail" placeholder="Эл.адрес, телефон или имя пользователя"
+                    <c:if test="${requestScope.msgError != null}">
+                        ${requestScope.msgError}
+                    </c:if>
+                    <label><input type="text" name="phoneOrEmailOrUserName"
+                                  placeholder="Эл.адрес, телефон или имя пользователя"
                                   required
                                   minlength="5"
                                   pattern="(^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$)|([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"

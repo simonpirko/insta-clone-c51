@@ -7,6 +7,7 @@ public final class Constants {
     public static final String PATH_AUTHORIZATION_NO_IMAGE_JSP = "/page/user/authorizationNoImage.jsp";
     public static final String PATH_USER_PROFILE_JSP = "/page/user/userProfile.jsp";
     public static final String PATH_USER_HOMEPAGE_JSP = "/page/user/homePage/userPage.jsp";
+    public static final String PATH_RESET_PASSWORD_JSP = "/page/user/passwordResetPage.jsp";
 
     public static final String NAME_REGISTRATION_SERVLET = "RegistrationServlet";
     public static final String NAME_AUTHORIZATION_SERVLET = "AuthorizationServlet";
@@ -28,6 +29,7 @@ public final class Constants {
     public static final String ERRORMESSAGE_INCORRECT_ENTER_NUMBER = "К сожалению, вы ввели неправильный пароль. Проверьте свой пароль еще раз.";
     public static final String ERRORMESSAGE_INCORRECT_ENTER_USERNAME = "Введенное вами имя пользователя не принадлежит аккаунту. Проверьте свое имя пользователя и повторите попытку.";
     public static final String ERRORMESSAGE_ADD_USER = "Мы не можем добавить такого пользователя, пожалуйста, проверьте правильность данных";
+    public static final String ERRORMESSAGE_RESET_USER_PHONE_EMAIL = "Нет такого пользователя";
 
     private Constants() {
     }
