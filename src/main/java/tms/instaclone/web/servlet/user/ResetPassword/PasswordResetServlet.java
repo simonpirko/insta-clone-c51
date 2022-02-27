@@ -29,16 +29,7 @@ public class PasswordResetServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String phoneOrEmailOrUserName = req.getParameter("phoneOrEmailOrUserName").trim();
 
-        boolean isUserName;
-        boolean isPhoneNumber;
-        boolean isEmail;
-
-        isUserName = UserService.getInstance().getUserByUsername(phoneOrEmailOrUserName).isPresent();
-        isPhoneNumber = MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmailOrUserName);
-        isEmail = UserService.getInstance().getUserByEmail(phoneOrEmailOrUserName).isPresent();
-
-
-        if (isUserName) {
+        if (UserService.getInstance().getUserByUsername(phoneOrEmailOrUserName).isPresent()) {
             HttpSession session = req.getSession();
             User user = UserService.getInstance().getUserByUsername(phoneOrEmailOrUserName).get();
 
@@ -49,7 +40,7 @@ public class PasswordResetServlet extends HttpServlet {
             session.setAttribute("secretWord", secretWord);
 
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
-        } else if (isPhoneNumber) {
+        } else if (MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmailOrUserName)) {
             HttpSession session = req.getSession();
             MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmailOrUserName).get();
             User user = UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).get();
@@ -61,7 +52,7 @@ public class PasswordResetServlet extends HttpServlet {
             session.setAttribute("secretWord", secretWorld);
 
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
-        } else if (isEmail) {
+        } else if (UserService.getInstance().getUserByEmail(phoneOrEmailOrUserName).isPresent()) {
             HttpSession session = req.getSession();
             User user = UserService.getInstance().getUserByEmail(phoneOrEmailOrUserName).get();
 
