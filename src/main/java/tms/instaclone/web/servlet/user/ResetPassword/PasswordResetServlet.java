@@ -1,5 +1,6 @@
 package tms.instaclone.web.servlet.user.ResetPassword;
 
+import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
 import tms.instaclone.service.UserService;
 import tms.instaclone.validator.MobilePhoneNumberValidator;
@@ -28,9 +29,9 @@ public class PasswordResetServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String phoneOrEmailOrUserName = req.getParameter("phoneOrEmailOrUserName").trim();
 
-        boolean isUserName = false;
-        boolean isPhoneNumber = false;
-        boolean isEmail = false;
+        boolean isUserName;
+        boolean isPhoneNumber;
+        boolean isEmail;
 
         isUserName = UserService.getInstance().getUserByUsername(phoneOrEmailOrUserName).isPresent();
         isPhoneNumber = MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmailOrUserName);
@@ -50,10 +51,13 @@ public class PasswordResetServlet extends HttpServlet {
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);
         } else if (isPhoneNumber) {
             HttpSession session = req.getSession();
-
+            MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmailOrUserName).get();
+            User user = UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).get();
 
             Random random = new Random(100000000);
             int secretWorld = random.nextInt();
+
+            session.setAttribute("user", user);
             session.setAttribute("secretWord", secretWorld);
 
             req.getServletContext().getRequestDispatcher(PATH_PASSWORD_UPDATE_JSP).forward(req, resp);

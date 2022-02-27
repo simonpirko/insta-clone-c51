@@ -44,6 +44,5 @@ public class PasswordUpdateServlet extends HttpServlet {
             session.invalidate();
             resp.sendRedirect(URL_AUTHORIZATION_SERVLET);
         }
-
     }
 }

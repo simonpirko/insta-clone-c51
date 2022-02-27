@@ -45,5 +45,4 @@ public final class UserService {
     public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber){
         return userDAO.getUserByMobilePhoneNumber(mobilePhoneNumber);
     }
-
 }

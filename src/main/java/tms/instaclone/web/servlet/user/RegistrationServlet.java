@@ -6,6 +6,7 @@ import tms.instaclone.entity.User;
 import tms.instaclone.service.UserService;
 
 import tms.instaclone.validator.MobilePhoneNumberValidator;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,7 @@ public class RegistrationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("errormessage",null);
+        req.getSession().setAttribute("errormessage", null);
         req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
     }
 
@@ -36,55 +37,55 @@ public class RegistrationServlet extends HttpServlet {
         int day = Integer.parseInt(req.getParameter("day"));
         int month = Integer.parseInt(req.getParameter("month"));
         int year = Integer.parseInt(req.getParameter("year"));
-        LocalDate localDate=null;
-        try{
-            localDate = LocalDate.of(year,month,day);
-        }catch (Exception e){
+        LocalDate localDate = null;
+        try {
+            localDate = LocalDate.of(year, month, day);
+        } catch (Exception e) {
             setAttribute(req);
             req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_DATE);
             req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
         }
         String[] names = nameAndSurname.split("\\s+");
         String firstName = names[0];
-        String secondName=null;
-        if (names.length>1){
-            secondName=names[1];
+        String secondName = null;
+        if (names.length > 1) {
+            secondName = names[1];
         }
-        if(UserService.getInstance().getUserByUsername(username).isPresent()){
+        if (UserService.getInstance().getUserByUsername(username).isPresent()) {
             setAttribute(req);
             req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_USERNAME);
             req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-        }else {
-            if(MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmail)){
-                if(MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).isPresent()){
+        } else {
+            if (MobilePhoneNumberValidator.isValidPhoneNumber(phoneOrEmail)) {
+                if (MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).isPresent()) {
                     MobilePhoneNumber mobilePhoneNumber = MobilePhoneNumber.getMobilePhoneNumberByLongNumber(phoneOrEmail).get();
-                    if(UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).isPresent()){
+                    if (UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber).isPresent()) {
                         setAttribute(req);
                         req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_NUMBER);
                         req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-                    }else{
-                        if(!UserService.getInstance().save(new User(null,mobilePhoneNumber,
-                                firstName,secondName, username,
-                                password, localDate))){
+                    } else {
+                        if (!UserService.getInstance().save(new User(null, mobilePhoneNumber,
+                                firstName, secondName, username,
+                                password, localDate))) {
                             setAttribute(req);
                             req.getSession().setAttribute("errormessage", ERRORMESSAGE_ADD_USER);
                             req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
                         }
                         req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
                     }
-                }else {
+                } else {
                     setAttribute(req);
                     req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_NUMBER);
                     req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
                 }
-            }else if(UserService.getInstance().getUserByEmail(phoneOrEmail).isPresent()){
+            } else if (UserService.getInstance().getUserByEmail(phoneOrEmail).isPresent()) {
                 setAttribute(req);
                 req.getSession().setAttribute("errormessage", ERRORMESSAGE_EXIST_MAIL);
                 req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
-            }else {
-                if(!UserService.getInstance().save(new User(phoneOrEmail,null,
-                        firstName,secondName, username,
-                        password, localDate))){
+            } else {
+                if (!UserService.getInstance().save(new User(phoneOrEmail, null,
+                        firstName, secondName, username,
+                        password, localDate))) {
                     setAttribute(req);
                     req.getSession().setAttribute("errormessage", ERRORMESSAGE_ADD_USER);
                     req.getServletContext().getRequestDispatcher(PATH_REGISTRATION_JSP).forward(req, resp);
@@ -92,9 +93,9 @@ public class RegistrationServlet extends HttpServlet {
                 req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_JSP).forward(req, resp);
             }
         }
-
     }
-    private void setAttribute(HttpServletRequest req){
+
+    private void setAttribute(HttpServletRequest req) {
         req.getSession().setAttribute("phoneOrEmail", req.getParameter("phoneOrEmail"));
         req.getSession().setAttribute("nameAndSurname", req.getParameter("nameAndSurname"));
         req.getSession().setAttribute("username", req.getParameter("username"));
@@ -102,6 +103,5 @@ public class RegistrationServlet extends HttpServlet {
         req.getSession().setAttribute("day", req.getParameter("day"));
         req.getSession().setAttribute("month", req.getParameter("month"));
         req.getSession().setAttribute("year", req.getParameter("year"));
-
     }
 }
