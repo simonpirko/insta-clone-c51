@@ -1,9 +1,6 @@
 package tms.instaclone.web.servlet.user;
 
-import tms.instaclone.entity.MobilePhoneNumber;
-import tms.instaclone.entity.Post;
-import tms.instaclone.entity.Publication;
-import tms.instaclone.entity.User;
+import tms.instaclone.entity.*;
 import tms.instaclone.enums.PostType;
 
 import javax.servlet.ServletException;
@@ -90,6 +87,23 @@ public class AuthorizationServlet extends HttpServlet {
                 List.of(user2, user3), "Post4");
         Post post5User5 = new Publication(user5, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_48.jpg", "/user_data_storage/userid_5_imgid_49.jpg"),
                 List.of(user2, user3), "Post5");
+
+        // test-data-stories-back
+        Story story1User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_18.jpg"));
+        Story story2User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_19.jpg"));
+
+        Story story1User2 = new Story(user2, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_2.jpg"));
+        Story story2User2 = new Story(user2, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_3.jpg"));
+
+        Story story1User3 = new Story(user3, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_42.jpg"));
+        Story story2User3 = new Story(user3, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_43.jpg"));
+
+        Story story1User4 = new Story(user4, PostType.PHOTO, List.of("/user_data_storage/userid_4_imgid_35.jpg"));
+        Story story2User4 = new Story(user4, PostType.PHOTO, List.of("/user_data_storage/userid_4_imgid_40.jpg"));
+
+        Story story1User5 = new Story(user5, PostType.VIDEO, List.of("/user_data_storage/userid_3_videoid_6.mp4"));
+        Story story2User5 = new Story(user5, PostType.PHOTO, List.of("/user_data_storage/userid_3_imgid_28.jpg"));
+
     }
 
     @Override
