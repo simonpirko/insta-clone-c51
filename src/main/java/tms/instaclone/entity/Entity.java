@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public abstract class Entity {
     private long id;
     private LocalDateTime creationDateTime = LocalDateTime.now();
-    private LocalDateTime updateDateTime;
+    private LocalDateTime updateDateTime = LocalDateTime.now();
 
     public Entity() {
     }

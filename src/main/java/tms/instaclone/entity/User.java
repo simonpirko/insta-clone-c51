@@ -1,5 +1,6 @@
 package tms.instaclone.entity;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 public class User extends Entity {
@@ -10,6 +11,7 @@ public class User extends Entity {
     private String username;
     private String password;
     private LocalDate birthday;
+    private List<Story> stories;
 
     public User() {
     }
@@ -82,6 +84,14 @@ public class User extends Entity {
         this.birthday = birthday;
     }
 
+    public List<Story> getStories() {
+        return stories;
+    }
+
+    public void setStories(List<Story> stories) {
+        this.stories = stories;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +116,7 @@ public class User extends Entity {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
+                ", stories=" + stories +
                 '}' + '}';
     }
 }

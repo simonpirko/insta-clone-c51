@@ -1,21 +1,20 @@
 package tms.instaclone.entity;
 
-import java.util.List;
+import tms.instaclone.enums.PostType;
 
-public class Post extends Entity {
+import java.util.List;
+import java.util.Objects;
+
+public abstract class Post extends Entity {
     private User owner;
-    private String title;
+    private PostType postType;
     private List<String> videoOrImagePath;
     private List<User> userWhoHasMadeLike;
 
-    public Post() {
-    }
-
-    public Post(User owner, String title, List<String> videoOrImagePath, List<User> userWhoHasMadeLike) {
+    public Post(User owner, PostType postType, List<String> videoOrImagePath) {
         this.owner = owner;
-        this.title = title;
+        this.postType = postType;
         this.videoOrImagePath = videoOrImagePath;
-        this.userWhoHasMadeLike = userWhoHasMadeLike;
     }
 
     public User getOwner() {
@@ -26,12 +25,12 @@ public class Post extends Entity {
         this.owner = owner;
     }
 
-    public String getTitle() {
-        return title;
+    public PostType getPostType() {
+        return postType;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPostType(PostType postType) {
+        this.postType = postType;
     }
 
     public List<String> getVideoOrImagePath() {
@@ -48,5 +47,29 @@ public class Post extends Entity {
 
     public void setUserWhoHasMadeLike(List<User> userWhoHasMadeLike) {
         this.userWhoHasMadeLike = userWhoHasMadeLike;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Post post = (Post) o;
+        return owner.equals(post.owner) && postType == post.postType && videoOrImagePath.equals(post.videoOrImagePath);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(owner, postType, videoOrImagePath);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "Post{" +
+                "owner=" + owner +
+                ", postType=" + postType +
+                ", videoOrImagePath=" + videoOrImagePath +
+                ", userWhoHasMadeLike=" + userWhoHasMadeLike +
+                '}' + '}';
     }
 }
