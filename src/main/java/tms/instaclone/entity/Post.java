@@ -17,6 +17,13 @@ public abstract class Post extends Entity {
         this.videoOrImagePath = videoOrImagePath;
     }
 
+    public Post(User owner, PostType postType, List<String> videoOrImagePath, List<User> userWhoHasMadeLike) {
+        this.owner = owner;
+        this.postType = postType;
+        this.videoOrImagePath = videoOrImagePath;
+        this.userWhoHasMadeLike = userWhoHasMadeLike;
+    }
+
     public User getOwner() {
         return owner;
     }

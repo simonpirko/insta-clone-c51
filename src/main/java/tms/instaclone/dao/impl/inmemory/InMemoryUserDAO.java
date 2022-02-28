@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 public final class InMemoryUserDAO implements UserDAO {
     private static volatile InMemoryUserDAO instance;
@@ -58,6 +59,13 @@ public final class InMemoryUserDAO implements UserDAO {
     @Override
     public List<User> findAll() {
         return new ArrayList<>(dataSource.values());
+    }
+
+    @Override
+    public List<User> findAllBetween(long offset, long limit) {
+        SortedSet<User> users = new TreeSet<>(Comparator.comparingLong(User::getId));
+        users.addAll(dataSource.values());
+        return users.stream().skip(offset).limit(limit).collect(Collectors.toList());
     }
 
     @Override

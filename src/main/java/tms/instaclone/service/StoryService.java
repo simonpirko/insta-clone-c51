@@ -8,7 +8,7 @@ import tms.instaclone.entity.User;
 import java.util.Collections;
 import java.util.List;
 
-public class StoryService {
+public final class StoryService {
     private static volatile StoryService instance;
     private final StoryDAO storyDAO = InMemoryStoryDAO.getInstance();
 
