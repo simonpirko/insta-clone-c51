@@ -1,22 +1,29 @@
 package tms.instaclone.entity;
 
+import tms.instaclone.enums.PostType;
+
 import java.util.List;
 import java.util.Objects;
 
 public class Publication extends Post {
-    private String title;
+    private String caption;
 
-    public Publication(User owner, List<String> videoOrImagePath, String title) {
-        super(owner, videoOrImagePath);
-        this.title = title;
+    public Publication(User owner, PostType postType, List<String> videoOrImagePath, List<User> userWhoHasMadeLike) {
+        super(owner, postType, videoOrImagePath, userWhoHasMadeLike);
     }
 
-    public String getTitle() {
-        return title;
+    public Publication(User owner, PostType postType, List<String> videoOrImagePath, List<User> userWhoHasMadeLike,
+                       String caption) {
+        super(owner, postType, videoOrImagePath, userWhoHasMadeLike);
+        this.caption = caption;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getCaption() {
+        return caption;
+    }
+
+    public void setCaption(String caption) {
+        this.caption = caption;
     }
 
     @Override
@@ -25,19 +32,19 @@ public class Publication extends Post {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Publication that = (Publication) o;
-        return Objects.equals(title, that.title);
+        return Objects.equals(caption, that.caption);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), title);
+        return Objects.hash(super.hashCode(), caption);
     }
 
     @Override
     public String toString() {
         return super.toString() +
                 "Publication{" +
-                "title='" + title + '\'' +
+                "caption='" + caption + '\'' +
                 '}' + '}';
     }
 }
