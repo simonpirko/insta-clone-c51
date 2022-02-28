@@ -1,7 +1,8 @@
 package tms.instaclone.web.servlet.user;
 
+import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
-import tms.instaclone.service.UserServiceSingleton;
+import tms.instaclone.service.UserService;
 import tms.instaclone.validator.MobilePhoneNumberValidator;
 import tms.instaclone.validator.UserValidator;
 import javax.servlet.ServletException;
@@ -28,27 +29,32 @@ public class AuthorizationNoImageServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         if(UserValidator.isValidEmail(login)){
-            optional = UserServiceSingleton.getInstance().getUserByEmail(login);
+            optional = UserService.getInstance().getUserByEmail(login);
         }else if(MobilePhoneNumberValidator.isValidPhoneNumber(login)){
-            optional = UserServiceSingleton.getInstance().getUserByMobilePhoneNumber(login);
+            Optional<MobilePhoneNumber> mobilePhoneNumber =MobilePhoneNumber.getMobilePhoneNumberByLongNumber(login);
+            if(mobilePhoneNumber.isPresent()){
+                optional = UserService.getInstance().getUserByMobilePhoneNumber(mobilePhoneNumber.get());
+            }
         }else if(UserValidator.isValidUsername(login)){
-            optional = UserServiceSingleton.getInstance().getUserByUsername(login);
+            optional = UserService.getInstance().getUserByUsername(login);
         }
         if(optional.isPresent()){
             User user = optional.get();
             if(user.getPassword().equals(password)){
                 req.getSession().setAttribute("user", user);
+                req.getServletContext().getRequestDispatcher(PATH_USER_HOMEPAGE_JSP).forward(req, resp);
+
             }else {
                 req.getSession().setAttribute("login", login);
                 req.getSession().setAttribute("password", password);
-                req.getSession().setAttribute("errormessage", "К сожалению, вы ввели неправильный пароль. Проверьте свой пароль еще раз.");
-                req.getServletContext().getRequestDispatcher("/page/user/authorizationNoImage.jsp").forward(req, resp);
+                req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_ENTER_NUMBER);
+                req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_NO_IMAGE_JSP).forward(req, resp);
             }
         }else {
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);
-            req.getSession().setAttribute("errormessage", "Введенное вами имя пользователя не принадлежит аккаунту. Проверьте свое имя пользователя и повторите попытку.");
-            req.getServletContext().getRequestDispatcher("/page/user/authorizationNoImage.jsp").forward(req, resp);
+            req.getSession().setAttribute("errormessage", ERRORMESSAGE_INCORRECT_ENTER_USERNAME);
+            req.getServletContext().getRequestDispatcher(PATH_AUTHORIZATION_NO_IMAGE_JSP).forward(req, resp);
         }
     }
 }

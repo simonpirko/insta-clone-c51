@@ -6,23 +6,23 @@ import tms.instaclone.entity.User;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 
-public final class InMemoryUserDAOSingleton implements UserDAO {
-    private static volatile InMemoryUserDAOSingleton instance;
+public final class InMemoryUserDAO implements UserDAO {
+    private static volatile InMemoryUserDAO instance;
     private final Map<Long, User> dataSource = new ConcurrentHashMap<>();
+    private static AtomicLong idUser = new AtomicLong(0);
 
-    private InMemoryUserDAOSingleton() {
+    private InMemoryUserDAO() {
     }
 
-    public static InMemoryUserDAOSingleton getInstance(){
+    public static InMemoryUserDAO getInstance(){
         if (instance == null) {
-            synchronized (InMemoryUserDAOSingleton.class) {
+            synchronized (InMemoryUserDAO.class) {
                 if (instance == null) {
-                    instance = new InMemoryUserDAOSingleton();
+                    instance = new InMemoryUserDAO();
                 }
             }
         }
@@ -51,12 +51,21 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
 
     @Override
     public boolean save(User user) {
+        user.setId(idUser.incrementAndGet());
         return user != null && dataSource.putIfAbsent(user.getId(), user) == null;
     }
 
     @Override
+    public List<User> findAll() {
+        return new ArrayList<>(dataSource.values());
+    }
+
+    @Override
     public Optional<User> getUserByEmail(String email){
-        Optional<User> optional = dataSource.values().stream().filter(currentUser -> currentUser.getEmail().equals(email)).findAny();
+        Optional<User> optional = dataSource.values()
+                .stream()
+                .filter(currentUser -> currentUser.getEmail()!=null)
+                .filter(currentUser -> currentUser.getEmail().equals(email)).findAny();
         return optional;
     }
 
@@ -67,25 +76,11 @@ public final class InMemoryUserDAOSingleton implements UserDAO {
     }
 
     @Override
-    public Optional<User> getUserByMobilePhoneNumber(String login) {
+    public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber) {
 
-        String onlynumber = login.replaceAll("[\\s\\-\\(\\)]+", "");
-        Properties properties = new Properties();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("countrycallingcode.properties");
-        try {
-            properties.load(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Optional optional1 = properties.values()
-                .stream()
-                .filter(x->onlynumber.startsWith(x.toString()
-                        .replaceAll(" ", ""))).findFirst();
-        String countryCode = optional1.get().toString().replaceAll(" ","");
-        String number = onlynumber.substring(countryCode.length(), onlynumber.length());
-        MobilePhoneNumber mobilePhoneNumber = new MobilePhoneNumber(countryCode,number);
         Optional<User> optional = dataSource.values()
                 .stream()
+                .filter(currentUser -> currentUser.getMobilePhoneNumber()!=null)
                 .filter(currentUser -> currentUser.getMobilePhoneNumber().equals(mobilePhoneNumber)).findAny();
         return optional;
     }

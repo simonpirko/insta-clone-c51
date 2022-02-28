@@ -1,5 +1,6 @@
 package tms.instaclone.dao;
 
+import tms.instaclone.entity.MobilePhoneNumber;
 import tms.instaclone.entity.User;
 
 import java.util.Optional;
@@ -10,5 +11,5 @@ public interface UserDAO extends DataAccessObject<User> {
 
     Optional<User> getUserByUsername(String username);
 
-    Optional<User> getUserByMobilePhoneNumber(String mobilePhoneNumber);
+    Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber);
 }
