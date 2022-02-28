@@ -5,18 +5,19 @@ import tms.instaclone.entity.Story;
 import tms.instaclone.entity.User;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static tms.instaclone.entity.Story.STORY_LIFESPAN_HOURS;
 
-public class InMemoryStoryDAO implements StoryDAO {
+public final class InMemoryStoryDAO implements StoryDAO {
     private static volatile InMemoryStoryDAO instance;
     private final Map<Long, List<Story>> dataSource = new ConcurrentHashMap<>();
+    private final AtomicLong idGenerator = new AtomicLong(1L);
 
     private InMemoryStoryDAO() {
     }
@@ -44,12 +45,32 @@ public class InMemoryStoryDAO implements StoryDAO {
 
     @Override
     public boolean save(Story story) {
+        story.setId(idGenerator.getAndIncrement());
         AtomicBoolean isSaved = new AtomicBoolean(false);
         dataSource.merge(story.getOwner().getId(), new ArrayList<>(List.of(story)), (oldStories, newStory) -> {
             isSaved.set(newStory.addAll(oldStories));
             return newStory;
         });
         return isSaved.get();
+    }
+
+    @Override
+    public List<Story> findAll() {
+        return dataSource.values()
+                .stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Story> findAllBetween(long offset, long limit) {
+        SortedSet<Story> users = new TreeSet<>(Comparator.comparing(Story::getOwner));
+        List<Story> stories = dataSource.values()
+                .stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+        users.addAll(stories);
+        return users.stream().skip(offset).limit(limit).collect(Collectors.toList());
     }
 
     @Override

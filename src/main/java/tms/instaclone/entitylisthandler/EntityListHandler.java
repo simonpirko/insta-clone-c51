@@ -11,11 +11,11 @@ public class EntityListHandler<T extends Entity, R extends DataAccessObject<T>> 
     private R entityDAO;
     private List<T> entities;
     private ListIterator<T> entityListIterator;
+    private long offset;
+    private static final int LOAD_FACTOR = 3;
 
     public EntityListHandler(R entityDAO) {
         this.entityDAO = entityDAO;
-        entities = entityDAO != null ? entityDAO.findAll() : null;
-        entityListIterator = entities != null ? entities.listIterator() : null;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class EntityListHandler<T extends Entity, R extends DataAccessObject<T>> 
         if (entities != null) {
             return entities.size();
         } else {
-            throw new EntityListHandlerException();
+            return 0;
         }
     }
 
@@ -44,12 +44,18 @@ public class EntityListHandler<T extends Entity, R extends DataAccessObject<T>> 
 
     @Override
     public List<T> getNextEntities(int count) throws EntityListHandlerException {
+        if (entities == null || !entityListIterator.hasNext()) {
+            entities = entityDAO.findAllBetween(offset, (long) count * LOAD_FACTOR + offset);
+            entityListIterator = entities != null ? entities.listIterator() : null;
+        }
+
         List<T> nextEntities;
         if (count > 0 && entities != null && entityListIterator != null) {
             nextEntities = new ArrayList<>();
             while (entityListIterator.hasNext() && count != 0) {
                 nextEntities.add(entityListIterator.next());
                 count--;
+                offset++;
             }
             return nextEntities;
         } else {
@@ -61,8 +67,6 @@ public class EntityListHandler<T extends Entity, R extends DataAccessObject<T>> 
     public void resetIndex() throws EntityListHandlerException {
         if (entityListIterator != null && entities != null) {
             entityListIterator = entities.listIterator();
-        } else {
-            throw new EntityListHandlerException();
         }
     }
 }
