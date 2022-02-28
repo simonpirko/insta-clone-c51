@@ -88,6 +88,7 @@ public class AuthorizationServlet extends HttpServlet {
         Post post5User5 = new Publication(user5, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_48.jpg", "/user_data_storage/userid_5_imgid_49.jpg"),
                 List.of(user2, user3), "Post5");
 
+
         // test-data-stories-back
         Story story1User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_18.jpg"));
         Story story2User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_19.jpg"));
