@@ -2,6 +2,9 @@ package tms.instaclone.web.servlet.user;
 
 import tms.instaclone.entity.*;
 import tms.instaclone.enums.PostType;
+import tms.instaclone.service.PostService;
+import tms.instaclone.service.StoryService;
+import tms.instaclone.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +32,11 @@ public class AuthorizationServlet extends HttpServlet {
                 "Jeremy", "Clarkson", "Clarkson1", "1356763", LocalDate.now().minusYears(10L));
         User user5 = new User("James@gmail.com",new MobilePhoneNumber("+375", "333577688"),
                 "James", "May", "May1", "999955", LocalDate.now().minusYears(10L));
+        UserService.getInstance().save(user1);
+        UserService.getInstance().save(user2);
+        UserService.getInstance().save(user3);
+        UserService.getInstance().save(user4);
+        UserService.getInstance().save(user5);
 
         Post post1User1 = new Publication(user1, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_1.jpg", "/user_data_storage/userid_1_imgid_2.jpg"),
                 List.of(user1, user2, user3), "Post1");
@@ -88,22 +96,63 @@ public class AuthorizationServlet extends HttpServlet {
         Post post5User5 = new Publication(user5, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_48.jpg", "/user_data_storage/userid_5_imgid_49.jpg"),
                 List.of(user2, user3), "Post5");
 
+        PostService.getInstance().save(post1User1);
+        PostService.getInstance().save(post2User1);
+        PostService.getInstance().save(post3User1);
+        PostService.getInstance().save(post4User1);
+        PostService.getInstance().save(post5User1);
+        PostService.getInstance().save(post1User2);
+        PostService.getInstance().save(post2User2);
+        PostService.getInstance().save(post3User2);
+        PostService.getInstance().save(post4User2);
+        PostService.getInstance().save(post5User2);
+        PostService.getInstance().save(post1User3);
+        PostService.getInstance().save(post2User3);
+        PostService.getInstance().save(post3User3);
+        PostService.getInstance().save(post4User3);
+        PostService.getInstance().save(post5User3);
+        PostService.getInstance().save(post1User4);
+        PostService.getInstance().save(post2User4);
+        PostService.getInstance().save(post3User4);
+        PostService.getInstance().save(post4User4);
+        PostService.getInstance().save(post5User4);
+        PostService.getInstance().save(post1User5);
+        PostService.getInstance().save(post2User5);
+        PostService.getInstance().save(post3User5);
+        PostService.getInstance().save(post4User5);
+        PostService.getInstance().save(post5User5);
+
+
+
+
+
 
         // test-data-stories-back
-        Story story1User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_18.jpg"));
-        Story story2User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_19.jpg"));
+        Story story1User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_2.jpg"));
+        Story story2User1 = new Story(user1, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_7.jpg"));
 
-        Story story1User2 = new Story(user2, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_2.jpg"));
-        Story story2User2 = new Story(user2, PostType.PHOTO, List.of("/user_data_storage/userid_1_imgid_3.jpg"));
+        Story story1User2 = new Story(user2, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_13.jpg"));
+        Story story2User2 = new Story(user2, PostType.PHOTO, List.of("/user_data_storage/userid_2_imgid_14.jpg"));
 
-        Story story1User3 = new Story(user3, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_42.jpg"));
-        Story story2User3 = new Story(user3, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_43.jpg"));
+        Story story1User3 = new Story(user3, PostType.PHOTO, List.of("/user_data_storage/userid_3_imgid_28.jpg"));
+        Story story2User3 = new Story(user3, PostType.PHOTO, List.of("/user_data_storage/userid_3_imgid_25.jpg"));
 
         Story story1User4 = new Story(user4, PostType.PHOTO, List.of("/user_data_storage/userid_4_imgid_35.jpg"));
         Story story2User4 = new Story(user4, PostType.PHOTO, List.of("/user_data_storage/userid_4_imgid_40.jpg"));
 
-        Story story1User5 = new Story(user5, PostType.VIDEO, List.of("/user_data_storage/userid_3_videoid_6.mp4"));
-        Story story2User5 = new Story(user5, PostType.PHOTO, List.of("/user_data_storage/userid_3_imgid_28.jpg"));
+        Story story1User5 = new Story(user5, PostType.VIDEO, List.of("/user_data_storage/userid_5_imgid_45.jpg"));
+        Story story2User5 = new Story(user5, PostType.PHOTO, List.of("/user_data_storage/userid_5_imgid_43.jpg"));
+
+        StoryService.getInstance().save(story1User1);
+        StoryService.getInstance().save(story2User1);
+        StoryService.getInstance().save(story1User2);
+        StoryService.getInstance().save(story2User2);
+        StoryService.getInstance().save(story1User3);
+        StoryService.getInstance().save(story2User3);
+        StoryService.getInstance().save(story1User4);
+        StoryService.getInstance().save(story2User4);
+        StoryService.getInstance().save(story1User5);
+        StoryService.getInstance().save(story2User5);
 
     }
 
