@@ -8,18 +8,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
 public final class InMemoryPostDAO implements PostDAO {
     private static volatile InMemoryPostDAO instance;
     private final Map<Long, Post> dataSource = new ConcurrentHashMap<>();
+    private static AtomicLong idPost = new AtomicLong(0);
+    private static AtomicLong idImage = new AtomicLong(100);
+    private static AtomicLong idVideo = new AtomicLong(50);
 
     private InMemoryPostDAO() {
     }
 
     public static InMemoryPostDAO getInstance() {
         if (instance == null) {
-            synchronized (instance) {
+            synchronized (InMemoryPostDAO.class) {
                 if (instance == null) {
                     instance = new InMemoryPostDAO();
                 }
@@ -35,6 +39,8 @@ public final class InMemoryPostDAO implements PostDAO {
 
     @Override
     public boolean save(Post post) {
+        post.setId(idPost.incrementAndGet());
+
         return post != null && dataSource.putIfAbsent(post.getId(), post) == null;
     }
 
@@ -55,4 +61,11 @@ public final class InMemoryPostDAO implements PostDAO {
         return post;
     }
 
+    public static Long getIdImage() {
+        return idImage.incrementAndGet();
+    }
+
+    public static Long getIdVideo() {
+        return idVideo.incrementAndGet();
+    }
 }
