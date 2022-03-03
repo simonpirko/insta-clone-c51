@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static tms.instaclone.web.servlet.ServletConstants.PATH_USER_HOMEPAGE_JSP;
+
 @WebServlet(urlPatterns = "/addpost")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
@@ -75,7 +77,8 @@ public class addPostServlet extends HttpServlet {
             }
         }
         Post post = new Post(user,title,videoOrImagePath,new ArrayList<User>());
-        System.out.println(PostService.getInstance().save(post));
+        PostService.getInstance().save(post);
+        req.getServletContext().getRequestDispatcher(PATH_USER_HOMEPAGE_JSP).forward(req, resp);
 
     }
 }
