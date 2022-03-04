@@ -4,9 +4,7 @@ import tms.instaclone.dao.PostDAO;
 import tms.instaclone.entity.Post;
 import tms.instaclone.entity.User;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
@@ -47,6 +45,13 @@ public final class InMemoryPostDAO implements PostDAO {
     @Override
     public List<Post> findAll() {
         return null;
+    }
+
+    @Override
+    public List<Post> findAllBetween(long offset, long limit) {
+        SortedSet<Post> posts = new TreeSet<>(Comparator.comparing(Post::getCreationDateTime));
+        posts.addAll(dataSource.values());
+        return posts.stream().skip(offset).limit(limit).collect(Collectors.toList());
     }
 
     @Override

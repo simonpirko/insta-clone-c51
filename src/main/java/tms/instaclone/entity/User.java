@@ -1,8 +1,9 @@
 package tms.instaclone.entity;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
-public class User extends Entity {
+public class User extends Entity implements Comparable<User> {
     private String email;
     private MobilePhoneNumber mobilePhoneNumber;
     private String firstName;
@@ -10,8 +11,14 @@ public class User extends Entity {
     private String username;
     private String password;
     private LocalDate birthday;
+    private List<Story> stories;
 
     public User() {
+    }
+
+    public User(long id, String username) {
+        super(id);
+        this.username = username;
     }
 
     public User(String email, MobilePhoneNumber mobilePhoneNumber, String firstName, String lastName, String username,
@@ -82,6 +89,14 @@ public class User extends Entity {
         this.birthday = birthday;
     }
 
+    public List<Story> getStories() {
+        return stories;
+    }
+
+    public void setStories(List<Story> stories) {
+        this.stories = stories;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,6 +121,12 @@ public class User extends Entity {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", birthday=" + birthday +
+                ", stories=" + stories +
                 '}' + '}';
+    }
+
+    @Override
+    public int compareTo(User user) {
+        return getUsername().compareTo(user.getUsername());
     }
 }

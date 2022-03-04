@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import static tms.instaclone.web.servlet.ServletConstants.*;
+import static tms.instaclone.web.servlet.Constants.*;
 
 @WebServlet(urlPatterns = URL_USER_PROFILE_SERVLET, name = NAME_USER_PROFILE_SERVLET)
 public class UserProfileServlet extends HttpServlet {

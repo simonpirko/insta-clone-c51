@@ -1,6 +1,6 @@
 package tms.instaclone.entitylisthandler;
 
-public class EntityListHandlerException extends Exception {
+public class EntityListHandlerException extends RuntimeException {
 
     public EntityListHandlerException() {
         super();

@@ -30,6 +30,10 @@ public final class UserService {
         return UserValidator.isValid(user) && !userDAO.exists(user) && userDAO.save(user);
     }
 
+    public boolean update(User user) {
+        return UserValidator.isValid(user) && userDAO.save(user);
+    }
+
     public Optional<User> getUserByEmail(String email){
         return userDAO.getUserByEmail(email);
     }
@@ -41,5 +45,4 @@ public final class UserService {
     public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber){
         return userDAO.getUserByMobilePhoneNumber(mobilePhoneNumber);
     }
-
 }

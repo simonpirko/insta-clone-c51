@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
-import static tms.instaclone.web.servlet.ServletConstants.*;
+import static tms.instaclone.web.servlet.Constants.*;
 
 @WebServlet(urlPatterns = URL_AUTHORIZATION_NO_IMAGE_SERVLET, name = NAME_AUTHORIZATION_NO_IMAGE_SERVLET)
 public class AuthorizationNoImageServlet extends HttpServlet {
