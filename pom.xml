@@ -24,6 +24,7 @@
     <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
     <jstl.version>1.2</jstl.version>
     <junit-jupiter-api.version>5.8.2</junit-jupiter-api.version>
+    <commons-fileupload.version>1.4</commons-fileupload.version>
   </properties>
 
   <dependencies>
@@ -37,6 +38,12 @@
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
       <version>${jstl.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>${commons-fileupload.version}</version>
     </dependency>
 
     <dependency>
