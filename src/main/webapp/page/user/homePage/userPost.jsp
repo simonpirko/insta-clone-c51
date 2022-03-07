@@ -32,7 +32,7 @@
                 <!--                     INST-24: card-block-save-->
                 <div class="col-1">
                     <form action="/account/savePost/">
-                        <button type="submit" class="btn btn-light" name="postId" value="${post.id}">
+                        <button type="submit" class="btn btn-light" name="postId" value="1">
 <%--                            --%>
                             <img src="/page/images/logo_save.png" alt="save">
 <%--                            <a class="navbar-brand" href="#">--%>
@@ -44,6 +44,8 @@
                 </div>
             </div>
         </div>
+
+        ${sessionScope.errormessage==null}
 
         <div class="row">
             <div class="links">

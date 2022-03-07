@@ -36,6 +36,7 @@ public final class Constants {
     public static final String ERRORMESSAGE_UPDATE_USER_PASSWORD = "Мы не можем обновить пароль. Попробуйте еще раз";
     public static final String ERRORMESSAGE_RESET_USER_PHONE_EMAIL = "Нет такого пользователя";
     public static final String ERRORMESSAGE_INVALID_SECRET_WORD = "Секретная фраза введена неверно";
+    public static final String ERRORMESSAGE_SOMETHING_GONE_WRONG = "Что-то пошло не так";
 
     private Constants() {
     }
