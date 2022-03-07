@@ -26,16 +26,10 @@ public class SavePostServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, NullPointerException, ServletException {
         UserService userService = UserService.getInstance();
-        PostService postService = PostService.getInstance();
         HttpSession session = req.getSession();
-        Optional<User> optional =Optional.empty();
-        String login = String.valueOf(req.getSession().getAttribute("login"));
-        optional = UserService.getInstance().getUserByUsername(login);
-        String postId = req.getParameter("postId");
-        List publications = new ArrayList(optional.get().getPublications());
-        publications.add(postService.getPostById(Long.parseLong(postId)));
-        optional.get().setPublications(publications);
-        userService.save(optional.get());
+        User user = (User)req.getSession().getAttribute("user");
+        long postId = Long.parseLong(req.getParameter("postId"));
+        userService.savePostToUser(postId, user);
         req.getServletContext().getRequestDispatcher(Constants.URL_AUTHORIZATION_NO_IMAGE_SERVLET).forward(req, resp);
     }
 }

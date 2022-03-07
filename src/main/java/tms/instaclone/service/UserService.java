@@ -3,9 +3,12 @@ package tms.instaclone.service;
 import tms.instaclone.dao.UserDAO;
 import tms.instaclone.dao.impl.inmemory.InMemoryUserDAO;
 import tms.instaclone.entity.MobilePhoneNumber;
+import tms.instaclone.entity.Post;
 import tms.instaclone.entity.User;
 import tms.instaclone.validator.UserValidator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public final class UserService {
@@ -44,5 +47,14 @@ public final class UserService {
 
     public Optional<User> getUserByMobilePhoneNumber(MobilePhoneNumber mobilePhoneNumber){
         return userDAO.getUserByMobilePhoneNumber(mobilePhoneNumber);
+    }
+
+    public void savePostToUser(long postId, User user){              //INST-24: card-block-save
+        List publications = new ArrayList(user.getPublications());
+        PostService postService = PostService.getInstance();
+        Optional<Post> post = postService.getPostById(postId);
+        publications.add(post);
+        user.setPublications(publications);
+        update(user);
     }
 }

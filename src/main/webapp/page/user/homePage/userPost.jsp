@@ -33,6 +33,7 @@
                 <div class="col-1">
                     <form action="/account/savePost/">
                         <button type="submit" class="btn btn-light" name="postId" value="${post.id}">
+<%--                            --%>
                             <img src="/page/images/logo_save.png" alt="save">
 <%--                            <a class="navbar-brand" href="#">--%>
 <%--                                --%>
