@@ -22,8 +22,7 @@ public class AuthorizationServlet extends HttpServlet {
 
     @Override
     public void init(){
-        User user1 = new User(1, "Grey1");
-        user1 = new User("SashaGrey@gmail.com",new MobilePhoneNumber("+375", "294563345"),
+        User user1 = new User("SashaGrey@gmail.com",new MobilePhoneNumber("+375", "294563345"),
                 "Sasha", "Grey", "Grey1", "123457", LocalDate.now().minusYears(20L));
         User user2 = new User("Turner@gmail.com",new MobilePhoneNumber("+375", "294563675"),
                 "Alex", "Turner", "Turner1", "1233423", LocalDate.now().minusYears(25L));
