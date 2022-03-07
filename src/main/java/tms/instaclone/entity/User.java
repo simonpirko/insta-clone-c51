@@ -1,5 +1,6 @@
 package tms.instaclone.entity;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ public class User extends Entity implements Comparable<User> {
     private String password;
     private LocalDate birthday;
     private List<Story> stories;
-    private List<Publication> savedPublications; // INST-24: card-block-save (publication, that user saved, but they're not his own)
+    private List<Publication> savedPublications = new ArrayList<>(0); // INST-24: card-block-save (publication, that user saved, but they're not his own)
 
     public User() {
     }

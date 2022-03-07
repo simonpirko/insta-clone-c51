@@ -36,6 +36,6 @@ public class SavePostServlet extends HttpServlet {
         publications.add(postService.getPostById(Long.parseLong(postId)));
         optional.get().setPublications(publications);
         userService.save(optional.get());
-        req.getServletContext().getRequestDispatcher(Constants.URL_SAVE_POST_SERVLET).forward(req, resp);
+        req.getServletContext().getRequestDispatcher(Constants.URL_AUTHORIZATION_NO_IMAGE_SERVLET).forward(req, resp);
     }
 }

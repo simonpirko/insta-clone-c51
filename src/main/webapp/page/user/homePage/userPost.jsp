@@ -32,10 +32,11 @@
                 <!--                     INST-24: card-block-save-->
                 <div class="col-1">
                     <form action="/account/savePost/">
-                        <button type="submit" class="btn btn-primary" name="postId" value="${post.id}">
-                            <a class="navbar-brand" href="#">
-                                <img src="/page/images/logo_save.png" alt="save">
-                            </a>
+                        <button type="submit" class="btn btn-light" name="postId" value="${post.id}">
+                            <img src="/page/images/logo_save.png" alt="save">
+<%--                            <a class="navbar-brand" href="#">--%>
+<%--                                --%>
+<%--                            </a>--%>
                         </button>
                     </form>
 
