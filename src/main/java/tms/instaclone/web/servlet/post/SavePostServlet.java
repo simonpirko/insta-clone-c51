@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @WebServlet(urlPatterns = Constants.URL_SAVE_POST_SERVLET, name = Constants.NAME_SAVE_POST_SERVLET)
@@ -31,10 +32,10 @@ public class SavePostServlet extends HttpServlet {
         String login = String.valueOf(req.getSession().getAttribute("login"));
         optional = UserService.getInstance().getUserByUsername(login);
         String postId = req.getParameter("postId");
-        ArrayList publications = new ArrayList(optional.get().getPublications());
+        List publications = new ArrayList(optional.get().getPublications());
         publications.add(postService.getPostById(Long.parseLong(postId)));
         optional.get().setPublications(publications);
-        userService.save(optional);
-        req.getServletContext().getRequestDispatcher(Constants.PATH_USER_HOMEPAGE_JSP).forward(req, resp);
+        userService.save(optional.get());
+        req.getServletContext().getRequestDispatcher(Constants.URL_SAVE_POST_SERVLET).forward(req, resp);
     }
 }
