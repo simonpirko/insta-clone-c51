@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static tms.instaclone.web.servlet.Constants.ERRORMESSAGE_INCORRECT_ENTER_NUMBER;
 import static tms.instaclone.web.servlet.Constants.ERRORMESSAGE_SOMETHING_GONE_WRONG;
 
 
@@ -22,6 +21,12 @@ public class SavePostServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, NullPointerException, ServletException {
+        req.getServletContext().getRequestDispatcher(Constants.PATH_USER_HOMEPAGE_JSP).forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws
+            IOException, NullPointerException, ServletException {
         UserService userService = UserService.getInstance();
         User user = (User) req.getSession().getAttribute("user");
         if (user != null) {
@@ -31,8 +36,6 @@ public class SavePostServlet extends HttpServlet {
             }
         } else req.getSession().setAttribute("errormessage", ERRORMESSAGE_SOMETHING_GONE_WRONG);
 
-        req.getServletContext().getRequestDispatcher(Constants.URL_AUTHORIZATION_NO_IMAGE_SERVLET).
-
-    forward(req, resp);
-}
+        req.getServletContext().getRequestDispatcher(Constants.PATH_USER_HOMEPAGE_JSP).forward(req, resp);
+    }
 }

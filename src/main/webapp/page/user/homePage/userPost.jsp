@@ -31,7 +31,7 @@
                 </div>
                 <!--                     INST-24: card-block-save-->
                 <div class="col-1">
-                    <form action="/account/savePost/">
+                    <form action="/account/savePost/" method="post">
                         <button type="submit" class="btn btn-light" name="postId" value="1">
 <%--                            --%>
                             <img src="/page/images/logo_save.png" alt="save">
