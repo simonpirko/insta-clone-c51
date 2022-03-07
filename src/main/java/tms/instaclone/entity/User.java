@@ -12,6 +12,7 @@ public class User extends Entity implements Comparable<User> {
     private String password;
     private LocalDate birthday;
     private List<Story> stories;
+    private List<Publication> savedPublications; // INST-24: card-block-save (publication, that user saved, but they're not his own)
 
     public User() {
     }
@@ -95,6 +96,14 @@ public class User extends Entity implements Comparable<User> {
 
     public void setStories(List<Story> stories) {
         this.stories = stories;
+    }
+
+    public List<Publication> getPublications() {                 // INST-24: card-block-save
+        return savedPublications;
+    }
+
+    public void setPublications(List<Publication> publications) {        // INST-24: card-block-save
+        this.savedPublications = publications;
     }
 
     @Override

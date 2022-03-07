@@ -15,6 +15,7 @@ public final class Constants {
     public static final String NAME_PASSWORD_UPDATE_SERVLET = "PasswordUpdateServlet";
     public static final String NAME_AUTHORIZATION_NO_IMAGE_SERVLET = "AuthorizationNoImageServlet";
     public static final String NAME_USER_PROFILE_SERVLET = "UserProfileServlet";
+    public static final String NAME_SAVE_POST_SERVLET = "SavePostServlet";
 
     public static final String URL_REGISTRATION_SERVLET = "/accounts/emailsignup/";
     public static final String URL_AUTHORIZATION_SERVLET = "/";
@@ -22,6 +23,7 @@ public final class Constants {
     public static final String URL_PASSWORD_UPDATE_SERVLET = "/accounts/password/update/";
     public static final String URL_AUTHORIZATION_NO_IMAGE_SERVLET = "/accounts/login/";
     public static final String URL_USER_PROFILE_SERVLET = "/accounts/profile";
+    public static final String URL_SAVE_POST_SERVLET = "/account/savePost/";
 
     public static final String ERRORMESSAGE_INCORRECT_DATE = "Такой даты не существует в нашем архиве";
     public static final String ERRORMESSAGE_INCORRECT_NUMBER = "Не правильный номер телефона";
