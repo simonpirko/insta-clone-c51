@@ -22,16 +22,17 @@ public class AuthorizationServlet extends HttpServlet {
 
     @Override
     public void init(){
-        User user1 = new User("SashaGrey@gmail.com",new MobilePhoneNumber("+375", "294563345"),
-                "Sasha", "Grey", "Grey1", "123457", LocalDate.now().minusYears(10L));
+        User user1 = new User(1, "Grey1");
+        user1 = new User("SashaGrey@gmail.com",new MobilePhoneNumber("+375", "294563345"),
+                "Sasha", "Grey", "Grey1", "123457", LocalDate.now().minusYears(20L));
         User user2 = new User("Turner@gmail.com",new MobilePhoneNumber("+375", "294563675"),
-                "Alex", "Turner", "Turner1", "1233423", LocalDate.now().minusYears(10L));
+                "Alex", "Turner", "Turner1", "1233423", LocalDate.now().minusYears(25L));
         User user3 = new User("Richard@gmail.com",new MobilePhoneNumber("+375", "334587671"),
-                "Richard", "Hammond", "Hammond1", "1666663", LocalDate.now().minusYears(10L));
+                "Richard", "Hammond", "Hammond1", "1666663", LocalDate.now().minusYears(31L));
         User user4 = new User("Jeremy@gmail.com",new MobilePhoneNumber("+375", "339987688"),
-                "Jeremy", "Clarkson", "Clarkson1", "1356763", LocalDate.now().minusYears(10L));
+                "Jeremy", "Clarkson", "Clarkson1", "1356763", LocalDate.now().minusYears(41L));
         User user5 = new User("James@gmail.com",new MobilePhoneNumber("+375", "333577688"),
-                "James", "May", "May1", "999955", LocalDate.now().minusYears(10L));
+                "James", "May", "May1", "999955", LocalDate.now().minusYears(19L));
         UserService.getInstance().save(user1);
         UserService.getInstance().save(user2);
         UserService.getInstance().save(user3);
