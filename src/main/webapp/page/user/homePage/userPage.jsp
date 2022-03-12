@@ -35,9 +35,9 @@
             <%@include file="friendsStories.html" %>
 
             <div class="col-12 border bg-white mt-5">
-                <%@include file="userPost.html" %>
+                <%@include file="userPost.jsp" %>
                 <br>
-                <%@include file="userPost.html" %>
+                <%@include file="userPost.jsp" %>
             </div>
 
         </div>

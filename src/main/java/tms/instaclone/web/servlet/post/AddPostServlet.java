@@ -7,7 +7,9 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import tms.instaclone.dao.impl.inmemory.InMemoryPostDAO;
 import tms.instaclone.entity.Post;
+import tms.instaclone.entity.Publication;
 import tms.instaclone.entity.User;
+import tms.instaclone.enums.PostType;
 import tms.instaclone.service.PostService;
 
 import javax.servlet.ServletException;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import static tms.instaclone.web.servlet.ServletConstants.PATH_USER_HOMEPAGE_JSP;
+import static tms.instaclone.web.servlet.Constants.PATH_USER_HOMEPAGE_JSP;
 
 @WebServlet(urlPatterns = "/addpost")
 @MultipartConfig(
@@ -30,7 +32,7 @@ import static tms.instaclone.web.servlet.ServletConstants.PATH_USER_HOMEPAGE_JSP
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
         maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
-public class addPostServlet extends HttpServlet {
+public class AddPostServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User)req.getSession().getAttribute("user");
@@ -76,7 +78,7 @@ public class addPostServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }
-        Post post = new Post(user,title,videoOrImagePath,new ArrayList<User>());
+        Post post = new Publication(user, PostType.PHOTO,videoOrImagePath,new ArrayList<User>());
         PostService.getInstance().save(post);
         req.getServletContext().getRequestDispatcher(PATH_USER_HOMEPAGE_JSP).forward(req, resp);
 
